@@ -5,12 +5,14 @@ public class CharacterCell extends Cell {
 	private Character character;
 	private boolean isSafe;
 	
+	//Constructors
 	public CharacterCell(Character character, boolean isSafe) {
 		super();
 		this.character = character;
 		this.isSafe = isSafe;
 	}
 	
+	//Getters & Setters
 	public Character getCharacter() {
 		return character;
 	}
