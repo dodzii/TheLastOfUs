@@ -12,7 +12,7 @@ public abstract class Hero extends Character{
     private ArrayList<Supply> supplyInventory ;
     
    //Constructors
-    Hero(String name, int maxHp, int attackDmg, int maxActions){
+    public Hero(String name, int maxHp, int attackDmg, int maxActions){
     	super(name,maxHp,attackDmg);
     	this.maxActions=maxActions;
     }
