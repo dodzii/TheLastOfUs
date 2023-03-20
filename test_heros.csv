@@ -1,10 +1,19 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 Hero_0,FIGH,104,7,78
 Hero_1,EXP,21,6,71
 Hero_2,MED,40,8,39
 Hero_3,EXP,69,6,30
 Hero_4,FIGH,34,6,187
 Hero_5,EXP,10,8,195
+=======
+Hero_0,FIGH,26,7,71
+Hero_1,EXP,50,6,176
+Hero_2,MED,58,5,95
+Hero_3,EXP,19,9,135
+Hero_4,FIGH,18,5,77
+Hero_5,EXP,61,6,91
+>>>>>>> e3c6c7faff1a6591620e311dd0e5aa5adb4b6fcf
 =======
 Hero_0,FIGH,103,6,209
 Hero_1,EXP,30,9,141
