@@ -12,7 +12,6 @@ public class CharacterCell extends Cell {
 	public CharacterCell(Character character) {
 		super();
 		this.character = character;
-//		this.isSafe = isSafe;
 	}
 	
 	//Getters & Setters
