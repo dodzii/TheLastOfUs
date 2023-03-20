@@ -16,8 +16,8 @@ public class CharacterCell extends Cell {
 	public Character getCharacter() {
 		return character;
 	}
-	public void setCharacter(Character character) {
-		this.character = character;
+	public void setCharacter(Character charcter) {
+		this.character = charcter;
 	}
 	public boolean isSafe() {
 		return isSafe;
