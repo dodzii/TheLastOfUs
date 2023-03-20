@@ -20,8 +20,6 @@ public abstract class Character {
 		this.maxHp = maxHp;
 		this.attackDmg = attackDmg;
 		this.currentHp=maxHp;
-		this.target=null;
-		this.location=null;
 	}
 	
 	//Getters & Setters
