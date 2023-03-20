@@ -9,10 +9,10 @@ public class CharacterCell extends Cell {
 	private boolean isSafe;
 	
 	//Constructors
-	public CharacterCell(Character character, boolean isSafe) {
+	public CharacterCell(Character character) {
 		super();
 		this.character = character;
-		this.isSafe = isSafe;
+//		this.isSafe = isSafe;
 	}
 	
 	//Getters & Setters

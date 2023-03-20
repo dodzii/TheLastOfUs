@@ -20,8 +20,6 @@ public abstract class Character {
 		this.maxHp = maxHp;
 		this.attackDmg = attackDmg;
 		this.currentHp=maxHp;
-		this.target=null;
-		this.location=null;
 	}
 	
 	//Getters & Setters
@@ -41,7 +39,9 @@ public abstract class Character {
 		return currentHp;
 	}
 	public void setCurrentHp(int currentHp) {
-		this.currentHp = currentHp;
+		if(currentHp <= this.maxHp) {
+			this.currentHp = currentHp;
+		}
 	}
 	public int getAttackDmg() {
 		return attackDmg;
