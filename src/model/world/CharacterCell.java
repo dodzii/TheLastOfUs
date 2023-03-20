@@ -1,5 +1,8 @@
 package model.world;
 
+
+import model.characters.Character;
+
 public class CharacterCell extends Cell {
 	
 	private Character character;

@@ -8,7 +8,7 @@ public class TrapCell extends Cell{
 	public TrapCell() {
 		super();
 		int[] arr = {10,20,30};
-		this.trapDamage = arr[(int)Math.random()*2+1];
+		this.trapDamage = arr[(int)(Math.random()*3)];
 	}
 
 	//Getters & Setters

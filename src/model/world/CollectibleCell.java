@@ -1,6 +1,6 @@
 package model.world;
 
-import model.collectibles.Collectible;
+import model.collectibles.*;
 
 public class CollectibleCell extends Cell {
 	
