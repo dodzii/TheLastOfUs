@@ -1,7 +1,7 @@
 package model.characters;
 
 public class Zombie extends Character{
-	private static int ZOMBIES_COUNT;
+	private static int ZOMBIES_COUNT =1;
 	
 	//Constructors
 	public Zombie() {
