@@ -13,7 +13,7 @@ public class Game {
 	public static Cell [][] map;
 	
 	
-	public static void loadHeros(String filePath) throws Exception {
+	public static void loadHeroes(String filePath) throws Exception {
 		
 		String currentLine = "";
 		FileReader fileReader= new FileReader(filePath);
