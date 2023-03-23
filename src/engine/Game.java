@@ -20,6 +20,10 @@ public class Game {
 		BufferedReader br = new BufferedReader(fileReader);
 		while ((currentLine = br.readLine()) != null) {
 			String[]h=currentLine.split(",");
+			if(Integer.parseInt(h[2])<=0)
+				continue;
+			if((!h[1].equals("FIGH"))&&(!h[1].equals("MED"))&&(!h[1].equals("EXP")))
+				continue;
 			if(h[1].equals("FIGH")) {
 				Fighter o = new Fighter(h[0],Integer.parseInt(h[2]),Integer.parseInt(h[4]),Integer.parseInt(h[3]));
 				availableHeroes.add(o);
