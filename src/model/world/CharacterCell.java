@@ -9,6 +9,10 @@ public class CharacterCell extends Cell {
 	private boolean isSafe;
 	
 	//Constructors
+	public CharacterCell() {
+		
+	}
+	
 	public CharacterCell(Character character) {
 		super();
 		this.character = character;
@@ -18,18 +22,17 @@ public class CharacterCell extends Cell {
 	public Character getCharacter() {
 		return character;
 	}
+	
 	public void setCharacter(Character character) {
 		this.character = character;
 	}
+	
 	public boolean isSafe() {
 		return isSafe;
 	}
+	
 	public void setSafe(boolean isSafe) {
 		this.isSafe = isSafe;
 	}
 	
-	
-	
-	
-
 }

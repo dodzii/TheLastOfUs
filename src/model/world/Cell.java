@@ -6,12 +6,14 @@ public abstract class Cell {
 	
 	//Constructors
 	public Cell() {	
+		
 	}
 
 	//Getters & Setters
 	public boolean isVisible() {
 		return isVisible;
 	}
+	
 	public void setVisible(boolean isVisible) {
 		this.isVisible = isVisible;
 	}

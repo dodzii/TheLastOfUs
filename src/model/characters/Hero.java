@@ -12,6 +12,10 @@ public abstract class Hero extends Character{
     private ArrayList<Supply> supplyInventory ;
     
    //Constructors
+    public Hero() {
+    	
+    }
+    
     public Hero(String name, int maxHp, int attackDmg, int maxActions){
     	super(name,maxHp,attackDmg);
     	this.maxActions=maxActions;
@@ -24,6 +28,7 @@ public abstract class Hero extends Character{
 	public int getActionsAvailable() {
 		return actionsAvailable;
 	}
+	
 	public void setActionsAvailable(int actionsAvailable) {
 		this.actionsAvailable = actionsAvailable;
 	}
@@ -31,19 +36,21 @@ public abstract class Hero extends Character{
 	public int getMaxActions() {
 		return maxActions;
 	}
+	
 	public boolean isSpecialAction() {
 		return specialAction;
 	}
+	
 	public void setSpecialAction(boolean specialAction) {
 		this.specialAction = specialAction;
 	}
+	
 	public ArrayList<Vaccine> getVaccineInventory() {
 		return vaccineInventory;
 	}
+	
 	public ArrayList<Supply> getSupplyInventory() {
 		return supplyInventory;
 	}
-
-	 
 
 }
