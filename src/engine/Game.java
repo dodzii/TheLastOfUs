@@ -121,7 +121,6 @@ public class Game {
 		return true;
 	}
 	public static boolean checkWin() {
-		boolean empty=true;
 		for(int i=0;i<15;i++) {
 			for(int j=0;j<15;j++) {
 				Cell temp=map[i][j];
