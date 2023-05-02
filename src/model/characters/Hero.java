@@ -143,7 +143,7 @@ public abstract class Hero extends Character{
 		if(target!= null && target instanceof Zombie ) {
 			if(!this.vaccineInventory.isEmpty()) {
 				Vaccine vaccine=this.vaccineInventory.get(0);
-				if(true /*this.checkAdjency(target)*/) {
+				if(this.checkAdjacency(target)) { //throws exception>>??
 					vaccine.use(this);
 					Game.zombies.remove(target);
 					Point location=target.getLocation();
@@ -160,6 +160,17 @@ public abstract class Hero extends Character{
 		else {
 			throw new InvalidTargetException();
 		}
+	}
+	public boolean checkAdjacency(Character target) {
+		int x = this.getLocation().x;
+		int y = this.getLocation().y;
+		int xt = target.getLocation().x;
+		int yt = target.getLocation().y;
+		if((xt==x&&yt==y+1)||(xt==x&&yt==y-1)||(xt==x-1&&yt==y-1)||(xt==x-1&&yt==y)||(xt==x-1&&yt==y+1)||(xt==x+1&&yt==y-1)||(xt==x+1&&yt==y)||(xt==x+1&&yt==y+1))
+			return true;
+		else
+			return false;
+		
 	}
 	
 	

@@ -87,7 +87,9 @@ public class Game {
 			int x = (int)(Math.random()*15);
 			int y = (int)(Math.random()*15);
 			if(map[x][y]==null) {
-				map[x][y]=new CharacterCell(new Zombie());
+				Zombie z = new Zombie();
+				map[x][y]=new CharacterCell(z);
+				zombies.add(z);
 				i++;
 				if((x==1&&y==1)||(x==0&&y==1)||(x==1&&y==0)) {
 					map[x][y].setVisible(true);
@@ -173,7 +175,9 @@ public class Game {
 			int x = (int)(Math.random()*15);
 			int y = (int)(Math.random()*15);
 			if(map[x][y]==null) {
-				map[x][y] = new CharacterCell(new Zombie());
+				Zombie z = new Zombie();
+				map[x][y] = new CharacterCell(z);
+				zombies.add(z);
 				break;
 			}
 		}
