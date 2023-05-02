@@ -3,7 +3,12 @@ package engine;
 import java.util.*;
 import java.io.*;
 import model.characters.*;
+import model.collectibles.Supply;
+import model.collectibles.Vaccine;
 import model.world.Cell;
+import model.world.CharacterCell;
+import model.world.CollectibleCell;
+import model.world.TrapCell;
 
 public class Game {
 	
@@ -38,6 +43,87 @@ public class Game {
 			}
 		}
     }
+
+public static void startGame(Hero h) {
+	map[0][0]=new CharacterCell(h);
+	
+	availableHeroes.remove(h);
+	heroes.add(h);
+	int i=0;
+	while(i<5) {
+		int x = (int)(Math.random()*15);
+		int y = (int)(Math.random()*15);
+		if(map[x][y]==null) {
+			map[x][y]=new CollectibleCell(new Vaccine());
+			i++;
+			if((x==1&&y==1)||(x==0&&y==1)||(x==1&&y==0)) {
+				map[x][y].setVisible(true);
+			}
+		}
+	}
+	i=0;
+	while(i<5) {
+		int x = (int)(Math.random()*15);
+		int y = (int)(Math.random()*15);
+		if(map[x][y]==null) {
+			map[x][y]=new CollectibleCell(new Supply());
+			i++;
+			if((x==1&&y==1)||(x==0&&y==1)||(x==1&&y==0)) {
+				map[x][y].setVisible(true);
+			}
+		}
+	}
+	i=0;
+	while(i<5) {
+		int x = (int)(Math.random()*15);
+		int y = (int)(Math.random()*15);
+		if(map[x][y]==null) {
+			map[x][y]=new TrapCell();
+			i++;
+			if((x==1&&y==1)||(x==0&&y==1)||(x==1&&y==0)) {
+				map[x][y].setVisible(true);
+			}
+		}
+	}
+	i=0;
+	while(i<10) {
+		int x = (int)(Math.random()*15);
+		int y = (int)(Math.random()*15);
+		if(map[x][y]==null) {
+			map[x][y]=new CharacterCell(new Zombie());
+			i++;
+			if((x==1&&y==1)||(x==0&&y==1)||(x==1&&y==0)) {
+				map[x][y].setVisible(true);
+			} 
+		}
+	}
+	
+}
+public static boolean checkGameOver() {
+	if(heroes.size()==0)
+		return true;
+	for(int i=0;i<15;i++) {
+		for(int j=0;j<15;j++) {
+			if(map[i][j] instanceof CharacterCell) {
+				CharacterCell cell = (CharacterCell)map[i][j];
+				if(cell.getCharacter() instanceof Hero) {
+					Hero h = (Hero) cell.getCharacter();
+					if(h.getVaccineInventory().size()!=0) {
+						return false;
+					}
+				}
+			}
+			if(map[i][j] instanceof CollectibleCell) {
+				CollectibleCell cell =(CollectibleCell)map[i][j];
+				if(cell.getCollectible() instanceof Vaccine) {
+					return false;
+				}
+				
+			}
+		}
+	}
+	return true;
+}
 	
 }
 
