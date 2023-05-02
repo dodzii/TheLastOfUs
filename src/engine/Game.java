@@ -44,7 +44,7 @@ public class Game {
 		}
     }
 
-public static void startGame(Hero h) {
+    public static void startGame(Hero h) {
 	map[0][0]=new CharacterCell(h);
 	
 	availableHeroes.remove(h);
@@ -123,6 +123,23 @@ public static boolean checkGameOver() {
 		}
 	}
 	return true;
+}
+public static boolean checkWin() {
+	boolean empty=true;
+	for(int i=0;i<15;i++) {
+		for(int j=0;j<15;j++) {
+			Cell temp=map[i][j];
+			if(temp instanceof CollectibleCell &&((CollectibleCell)temp).getCollectible() instanceof Vaccine) {
+				return false;
+			}
+		}
+	}
+	for(Hero x:heroes) {
+		if(!x.getVaccineInventory().isEmpty()) {
+			return false;
+		}
+	}
+	return((heroes.size()>=5));
 }
 	
 }
