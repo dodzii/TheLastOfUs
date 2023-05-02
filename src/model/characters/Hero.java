@@ -2,13 +2,10 @@ package model.characters;
 
 import java.awt.Point;
 import java.util.*;
-
 import engine.Game;
-import exceptions.MovementException;
+import exceptions.*;
 import model.collectibles.*;
-import model.world.CharacterCell;
-import model.world.CollectibleCell;
-import model.world.TrapCell;
+import model.world.*;
 
 public abstract class Hero extends Character{
 	
@@ -124,4 +121,23 @@ public abstract class Hero extends Character{
 		}
 		
 	}
+	
+	public void useSpecial() throws GameActionException {
+		if(!this.supplyInventory.isEmpty()) {
+			if(this.actionsAvailable>0) {
+				supplyInventory.get(0).use(this);
+				this.setSpecialAction(true);
+				actionsAvailable--;
+			}
+			else {
+				throw new NotEnoughActionsException();
+			}
+		}
+		else {
+			throw new NoAvailableResourcesException();
+		}
+	}
+	
+	
+	
 }
