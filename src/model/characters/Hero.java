@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.util.*;
 import engine.Game;
 import exceptions.*;
+import model.characters.*;
 import model.collectibles.*;
 import model.world.*;
 
@@ -127,7 +128,6 @@ public abstract class Hero extends Character{
 			if(this.actionsAvailable>0) {
 				supplyInventory.get(0).use(this);
 				this.setSpecialAction(true);
-				actionsAvailable--;
 			}
 			else {
 				throw new NotEnoughActionsException();
@@ -135,6 +135,30 @@ public abstract class Hero extends Character{
 		}
 		else {
 			throw new NoAvailableResourcesException();
+		}
+	}
+	
+	public void cure() throws GameActionException {
+		Character target=this.getTarget();
+		if(target!= null && target instanceof Zombie ) {
+			if(!this.vaccineInventory.isEmpty()) {
+				Vaccine vaccine=this.vaccineInventory.get(0);
+				if(true /*this.checkAdjency(target)*/) {
+					vaccine.use(this);
+					Game.zombies.remove(target);
+					Point location=target.getLocation();
+					Hero hero=Game.availableHeroes.remove(0);
+					((CharacterCell)Game.map[location.x][location.y]).setCharacter(hero);
+					hero.setLocation(location);
+					hero.assignVisibilityAround();
+				}
+			}
+			else {
+				throw new NoAvailableResourcesException();
+			}
+		}
+		else {
+			throw new InvalidTargetException();
 		}
 	}
 	
