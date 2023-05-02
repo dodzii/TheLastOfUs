@@ -3,12 +3,9 @@ package engine;
 import java.util.*;
 import java.io.*;
 import model.characters.*;
-import model.collectibles.Supply;
-import model.collectibles.Vaccine;
-import model.world.Cell;
-import model.world.CharacterCell;
-import model.world.CollectibleCell;
-import model.world.TrapCell;
+import model.collectibles.*;
+import model.world.*;
+
 
 public class Game {
 	
