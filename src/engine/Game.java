@@ -42,60 +42,59 @@ public class Game {
     }
 
     public static void startGame(Hero h) {
-	map[0][0]=new CharacterCell(h);
-	
-	availableHeroes.remove(h);
-	heroes.add(h);
-	int i=0;
-	while(i<5) {
-		int x = (int)(Math.random()*15);
-		int y = (int)(Math.random()*15);
-		if(map[x][y]==null) {
-			map[x][y]=new CollectibleCell(new Vaccine());
-			i++;
-			if((x==1&&y==1)||(x==0&&y==1)||(x==1&&y==0)) {
-				map[x][y].setVisible(true);
+    	
+		map[0][0]=new CharacterCell(h);
+		availableHeroes.remove(h);
+		heroes.add(h);
+		int i=0;
+		while(i<5) {
+			int x = (int)(Math.random()*15);
+			int y = (int)(Math.random()*15);
+			if(map[x][y]==null) {
+				map[x][y]=new CollectibleCell(new Vaccine());
+				i++;
+				if((x==1&&y==1)||(x==0&&y==1)||(x==1&&y==0)) {
+					map[x][y].setVisible(true);
+				}
 			}
 		}
-	}
-	i=0;
-	while(i<5) {
-		int x = (int)(Math.random()*15);
-		int y = (int)(Math.random()*15);
-		if(map[x][y]==null) {
-			map[x][y]=new CollectibleCell(new Supply());
-			i++;
-			if((x==1&&y==1)||(x==0&&y==1)||(x==1&&y==0)) {
-				map[x][y].setVisible(true);
+		i=0;
+		while(i<5) {
+			int x = (int)(Math.random()*15);
+			int y = (int)(Math.random()*15);
+			if(map[x][y]==null) {
+				map[x][y]=new CollectibleCell(new Supply());
+				i++;
+				if((x==1&&y==1)||(x==0&&y==1)||(x==1&&y==0)) {
+					map[x][y].setVisible(true);
+				}
 			}
 		}
-	}
-	i=0;
-	while(i<5) {
-		int x = (int)(Math.random()*15);
-		int y = (int)(Math.random()*15);
-		if(map[x][y]==null) {
-			map[x][y]=new TrapCell();
-			i++;
-			if((x==1&&y==1)||(x==0&&y==1)||(x==1&&y==0)) {
-				map[x][y].setVisible(true);
+		i=0;
+		while(i<5) {
+			int x = (int)(Math.random()*15);
+			int y = (int)(Math.random()*15);
+			if(map[x][y]==null) {
+				map[x][y]=new TrapCell();
+				i++;
+				if((x==1&&y==1)||(x==0&&y==1)||(x==1&&y==0)) {
+					map[x][y].setVisible(true);
+				}
 			}
 		}
-	}
-	i=0;
-	while(i<10) {
-		int x = (int)(Math.random()*15);
-		int y = (int)(Math.random()*15);
-		if(map[x][y]==null) {
-			map[x][y]=new CharacterCell(new Zombie());
-			i++;
-			if((x==1&&y==1)||(x==0&&y==1)||(x==1&&y==0)) {
-				map[x][y].setVisible(true);
-			} 
+		i=0;
+		while(i<10) {
+			int x = (int)(Math.random()*15);
+			int y = (int)(Math.random()*15);
+			if(map[x][y]==null) {
+				map[x][y]=new CharacterCell(new Zombie());
+				i++;
+				if((x==1&&y==1)||(x==0&&y==1)||(x==1&&y==0)) {
+					map[x][y].setVisible(true);
+				} 
+			}
 		}
-	}
-	
-}
+    }
 	public static boolean checkGameOver() {
 		if(heroes.size()==0)
 			return true;
@@ -148,6 +147,14 @@ public class Game {
 					h.setActionsAvailable(h.getMaxActions());
 					h.assignVisibilityAround();
 				}
+			}
+		}
+		while(true) {
+			int x = (int)(Math.random()*15);
+			int y = (int)(Math.random()*15);
+			if(map[x][y]==null) {
+				map[x][y] = new CharacterCell(new Zombie());
+				break;
 			}
 		}
 	}
