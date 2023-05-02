@@ -149,7 +149,7 @@ public class Game {
 				if(temp instanceof CharacterCell && ((CharacterCell)temp).getCharacter() instanceof Hero) {
 					Hero h=(Hero) ((CharacterCell)temp).getCharacter();
 					h.setActionsAvailable(h.getMaxActions());
-					//h.assignVisibilityAround();
+					h.assignVisibilityAround();
 				}
 			}
 		}

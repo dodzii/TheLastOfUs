@@ -91,4 +91,37 @@ public abstract class Hero extends Character{
 			throw new MovementException();
 		}	
 	}
+	
+	public void assignVisibilityAround() {
+		int tmpx = this.getLocation().x;
+		int tmpy = this.getLocation().y;
+		int xr = tmpx + 1;
+		int yu = tmpy + 1;
+		int xl = tmpx - 1;
+		int yd = tmpy - 1;
+		
+		if(xr>=0 && xr<=14) {
+			Game.map[xr][tmpy].setVisible(true);
+		}
+		
+		if(xl>=0 && xl<=14) {
+			Game.map[xl][tmpy].setVisible(true);
+		}
+		
+		if(yu>=0 && yu<=14) {
+			Game.map[tmpx][yu].setVisible(true);
+		}
+		
+		if(yd>=0 && yd<=14) {
+			Game.map[tmpx][yd].setVisible(true);
+		}
+		
+		if(xr>=0 && xr<=14 && xl>=0 && xl<=1 && yu>=0 && yu<=14 && yd>=0 && yd<=14) {
+			Game.map[xl][yd].setVisible(true);
+			Game.map[xr][yd].setVisible(true);
+			Game.map[xl][yu].setVisible(true);
+			Game.map[xr][yu].setVisible(true);
+		}
+		
+	}
 }
