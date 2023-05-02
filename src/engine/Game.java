@@ -145,18 +145,13 @@ public class Game {
 				if(temp instanceof CharacterCell && ((CharacterCell)temp).getCharacter() instanceof Hero) {
 					Hero h=(Hero) ((CharacterCell)temp).getCharacter();
 					h.setActionsAvailable(h.getMaxActions());
+					h.setTarget(null);
+					h.setSpecialAction(false);;
 					h.assignVisibilityAround();
 				}
 			}
 		}
-		while(true) {
-			int x = (int)(Math.random()*15);
-			int y = (int)(Math.random()*15);
-			if(map[x][y]==null) {
-				map[x][y] = new CharacterCell(new Zombie());
-				break;
-			}
-		}
+		respawnZombie();
 	}
 	public static void setAllInvisible(){
 		for(int i=0;i<15;i++) {
@@ -174,6 +169,15 @@ public class Game {
 			}
 		}
 	}
-	
+	public static void respawnZombie() {
+		while(true) {
+			int x = (int)(Math.random()*15);
+			int y = (int)(Math.random()*15);
+			if(map[x][y]==null) {
+				map[x][y] = new CharacterCell(new Zombie());
+				break;
+			}
+		}
+	}
 }
 
