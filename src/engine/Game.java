@@ -142,7 +142,7 @@ public class Game {
 		return((heroes.size()>=5));
 	}
 	public static void endTurn() {
-		//setAllInvisible();
+		setAllInvisible();
 		for(int i=0;i<15;i++) {
 			for(int j=0;j<15;j++) {
 				Cell temp=map[i][j];
@@ -150,6 +150,22 @@ public class Game {
 					Hero h=(Hero) ((CharacterCell)temp).getCharacter();
 					h.setActionsAvailable(h.getMaxActions());
 					h.assignVisibilityAround();
+				}
+			}
+		}
+	}
+	public static void setAllInvisible(){
+		for(int i=0;i<15;i++) {
+			for(int j=0;j<15;j++) {
+				Cell cell = map[i][j];
+				if(cell instanceof CharacterCell) {
+						CharacterCell cell2= (CharacterCell)cell;
+					if(cell2.getCharacter() instanceof Hero) {
+						continue;
+					}
+				}
+				else if(cell!=null) {
+					cell.setVisible(false);
 				}
 			}
 		}
