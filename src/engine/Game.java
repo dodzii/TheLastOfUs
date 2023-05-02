@@ -99,48 +99,61 @@ public class Game {
 	}
 	
 }
-public static boolean checkGameOver() {
-	if(heroes.size()==0)
-		return true;
-	for(int i=0;i<15;i++) {
-		for(int j=0;j<15;j++) {
-			if(map[i][j] instanceof CharacterCell) {
-				CharacterCell cell = (CharacterCell)map[i][j];
-				if(cell.getCharacter() instanceof Hero) {
-					Hero h = (Hero) cell.getCharacter();
-					if(h.getVaccineInventory().size()!=0) {
-						return false;
+	public static boolean checkGameOver() {
+		if(heroes.size()==0)
+			return true;
+		for(int i=0;i<15;i++) {
+			for(int j=0;j<15;j++) {
+				if(map[i][j] instanceof CharacterCell) {
+					CharacterCell cell = (CharacterCell)map[i][j];
+					if(cell.getCharacter() instanceof Hero) {
+						Hero h = (Hero) cell.getCharacter();
+						if(h.getVaccineInventory().size()!=0) {
+							return false;
+						}
 					}
 				}
-			}
-			if(map[i][j] instanceof CollectibleCell) {
-				CollectibleCell cell =(CollectibleCell)map[i][j];
-				if(cell.getCollectible() instanceof Vaccine) {
-					return false;
+				if(map[i][j] instanceof CollectibleCell) {
+					CollectibleCell cell =(CollectibleCell)map[i][j];
+					if(cell.getCollectible() instanceof Vaccine) {
+						return false;
+					}
+					
 				}
-				
 			}
 		}
+		return true;
 	}
-	return true;
-}
-public static boolean checkWin() {
-	boolean empty=true;
-	for(int i=0;i<15;i++) {
-		for(int j=0;j<15;j++) {
-			Cell temp=map[i][j];
-			if(temp instanceof CollectibleCell &&((CollectibleCell)temp).getCollectible() instanceof Vaccine) {
+	public static boolean checkWin() {
+		boolean empty=true;
+		for(int i=0;i<15;i++) {
+			for(int j=0;j<15;j++) {
+				Cell temp=map[i][j];
+				if(temp instanceof CollectibleCell &&((CollectibleCell)temp).getCollectible() instanceof Vaccine) {
+					return false;
+				}
+			}
+		}
+		for(Hero x:heroes) {
+			if(!x.getVaccineInventory().isEmpty()) {
 				return false;
 			}
 		}
+		return((heroes.size()>=5));
 	}
-	for(Hero x:heroes) {
-		if(!x.getVaccineInventory().isEmpty()) {
-			return false;
+	public static void endTurn() {
+		//setAllInvisible();
+		for(int i=0;i<15;i++) {
+			for(int j=0;j<15;j++) {
+				Cell temp=map[i][j];
+				if(temp instanceof CharacterCell && ((CharacterCell)temp).getCharacter() instanceof Hero) {
+					Hero h=(Hero) ((CharacterCell)temp).getCharacter();
+					h.setActionsAvailable(h.getMaxActions());
+					//h.assignVisibilityAround();
+				}
+			}
 		}
 	}
-	return((heroes.size()>=5));
-}
 	
 }
 
