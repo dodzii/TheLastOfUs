@@ -88,6 +88,7 @@ public abstract class Hero extends Character{
 		else {
 			throw new MovementException();
 		}	
+		this.assignVisibilityAround();
 	}
 	
 	public void assignVisibilityAround() {
@@ -114,12 +115,22 @@ public abstract class Hero extends Character{
 			Game.map[tmpx][yd].setVisible(true);
 		}
 		
-		if(xr>=0 && xr<=14 && xl>=0 && xl<=1 && yu>=0 && yu<=14 && yd>=0 && yd<=14) {
-			Game.map[xl][yd].setVisible(true);
-			Game.map[xr][yd].setVisible(true);
-			Game.map[xl][yu].setVisible(true);
+		if(xr>=0 && xr<=14 && yu>=0 && yu<=14) {
 			Game.map[xr][yu].setVisible(true);
 		}
+		
+		if(xr>=0 && xr<=14 && yd>=0 && yd<=14) {
+			Game.map[xr][yd].setVisible(true);
+		}
+		
+		if(xl>=0 && xl<=14 && yu>=0 && yu<=14) {
+			Game.map[xl][yu].setVisible(true);
+		}
+		
+		if(xl>=0 && xl<=14 && yd>=0 && yd<=14) {
+			Game.map[xl][yd].setVisible(true);
+		}
+		
 		
 	}
 	
