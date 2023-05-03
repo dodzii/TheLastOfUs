@@ -2,6 +2,7 @@ package model.characters;
 
 import java.awt.Point;
 
+import engine.Game;
 import exceptions.InvalidTargetException;
 import exceptions.NotEnoughActionsException;
 
@@ -83,10 +84,10 @@ public abstract class Character {
 	public void dealDamage(boolean attack) throws InvalidTargetException, NotEnoughActionsException {
 		Character target = this.target;
 		if (target != null && checkAdjacency(target)) {
-			int damage = (attack)?this.attackDmg:(this.attackDmg/2);
+			int damage = (attack)? this.attackDmg :  (this.attackDmg/2);
 			target.currentHp = target.currentHp - damage;
 			if(target.currentHp==0) {
-				//target.onCharacterDeath;
+				target.onCharacterDeath();
 			}
 			else {
 				if(attack) {
@@ -101,6 +102,13 @@ public abstract class Character {
 		}
 	}
 
-	
+	public void onCharacterDeath() {
+		Game.map[location.x][location.y]=null;
+		if(this instanceof Hero) {
+			Game.heroes.remove(this);
+			Game.availableHeroes.add((Hero)this);
+		}
+		
+	}
 	
 }
