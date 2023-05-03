@@ -74,7 +74,7 @@ public abstract class Character {
 	
 	public void attack() throws InvalidTargetException, NotEnoughActionsException  {
 		Character target = this.target;
-		if (checkAdjacency(target)) {
+		if (target != null && checkAdjacency(target)) {
 			target.currentHp = target.currentHp - this.attackDmg;
 //			if(target.currentHp==0)
 //				target.onCharacterDeath;
