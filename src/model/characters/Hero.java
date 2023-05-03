@@ -176,15 +176,16 @@ public abstract class Hero extends Character{
 			throw new InvalidTargetException();
 		}
 	}
-	public boolean checkAdjacency(Character target) {
-		int x = this.getLocation().x;
-		int y = this.getLocation().y;
-		int xt = target.getLocation().x;
-		int yt = target.getLocation().y;
-		if((xt==x&&yt==y+1)||(xt==x&&yt==y-1)||(xt==x-1&&yt==y-1)||(xt==x-1&&yt==y)||(xt==x-1&&yt==y+1)||(xt==x+1&&yt==y-1)||(xt==x+1&&yt==y)||(xt==x+1&&yt==y+1))
-			return true;
+	
+	public void attack() throws InvalidTargetException , NotEnoughActionsException  {
+		if(actionsAvailable > 0)
+		{
+			super.attack();
+			actionsAvailable--;
+		}
 		else
-			return false;
+			throw new NotEnoughActionsException();
+		
 		
 	}
 	

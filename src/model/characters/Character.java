@@ -2,6 +2,9 @@ package model.characters;
 
 import java.awt.Point;
 
+import exceptions.InvalidTargetException;
+import exceptions.NotEnoughActionsException;
+
 public abstract class Character {
 	
 	private String name;
@@ -57,6 +60,29 @@ public abstract class Character {
 		this.target = target;
 	}
 
+	public boolean checkAdjacency(Character target) {
+		int x = this.getLocation().x;
+		int y = this.getLocation().y;
+		int xt = target.getLocation().x;
+		int yt = target.getLocation().y;
+		if((xt==x&&yt==y+1)||(xt==x&&yt==y-1)||(xt==x-1&&yt==y-1)||(xt==x-1&&yt==y)||(xt==x-1&&yt==y+1)||(xt==x+1&&yt==y-1)||(xt==x+1&&yt==y)||(xt==x+1&&yt==y+1))
+			return true;
+		else
+			return false;
+		
+	}
+	
+	public void attack() throws InvalidTargetException, NotEnoughActionsException  {
+		Character target = this.target;
+		if (checkAdjacency(target)) {
+			target.currentHp = target.currentHp - this.attackDmg;
+//			if(target.currentHp==0)
+//				target.onCharacterDeath;
+		}
+		else {
+			throw new InvalidTargetException();
+		}
+	}
 
 	
 	
