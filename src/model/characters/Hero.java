@@ -191,6 +191,9 @@ public abstract class Hero extends Character{
 			throw new NotEnoughActionsException();
 	}
 	
-	
-	
+	public void onCharacterDeath() {
+		super.onCharacterDeath();
+		Game.heroes.remove(this);
+		Game.availableHeroes.add((Hero)this);
+	}	
 }

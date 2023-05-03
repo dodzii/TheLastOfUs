@@ -1,5 +1,7 @@
 package model.characters;
 
+import engine.Game;
+
 public class Zombie extends Character{
 	private static int ZOMBIES_COUNT =1;
 	
@@ -14,5 +16,9 @@ public class Zombie extends Character{
 		return ZOMBIES_COUNT;
 	}
 	
-	
+	public void onCharacterDeath() {
+		super.onCharacterDeath();
+		Game.zombies.remove(this);
+		Game.respawnZombie();
+	}
 }

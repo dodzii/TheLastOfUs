@@ -104,10 +104,6 @@ public abstract class Character {
 
 	public void onCharacterDeath() {
 		Game.map[location.x][location.y]=null;
-		if(this instanceof Hero) {
-			Game.heroes.remove(this);
-			Game.availableHeroes.add((Hero)this);
-		}
 		
 	}
 	
