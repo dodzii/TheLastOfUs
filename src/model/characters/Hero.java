@@ -155,18 +155,22 @@ public abstract class Hero extends Character{
 	
 	public void cure() throws GameActionException {
 		Character target=this.getTarget();
-		if(target!= null && target instanceof Zombie ) {
+		if(target!= null && target instanceof Zombie && this.checkAdjacency(target)) {
 			if(!this.vaccineInventory.isEmpty()) {
 				Vaccine vaccine=this.vaccineInventory.get(0);
-				if(this.checkAdjacency(target)) { //throws exception>>??
-					vaccine.use(this);
-					Game.zombies.remove(target);
-					Point location=target.getLocation();
-					Hero hero=Game.availableHeroes.remove(0);
-					((CharacterCell)Game.map[location.x][location.y]).setCharacter(hero);
-					hero.setLocation(location);
-					hero.assignVisibilityAround();
-				}
+					if(actionsAvailable > 0)
+					{
+						this.actionsAvailable--;
+						vaccine.use(this);
+						Game.zombies.remove(target);
+						Point location=target.getLocation();
+						Hero hero=Game.availableHeroes.remove(0);
+						((CharacterCell)Game.map[location.x][location.y]).setCharacter(hero);
+						hero.setLocation(location);
+						hero.assignVisibilityAround();
+					}
+					else
+						throw new NotEnoughActionsException();
 			}
 			else {
 				throw new NoAvailableResourcesException();
@@ -185,8 +189,6 @@ public abstract class Hero extends Character{
 		}
 		else
 			throw new NotEnoughActionsException();
-		
-		
 	}
 	
 	
