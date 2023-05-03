@@ -72,18 +72,22 @@ public abstract class Hero extends Character{
 			if(Game.map[tmp.x][tmp.y] instanceof TrapCell) {
 				int Damage = ((TrapCell)(Game.map[tmp.x][tmp.y])).getTrapDamage();
 				this.setCurrentHp(this.getCurrentHp()-Damage);
+				Game.map[tmp.x][tmp.y] = new CharacterCell(this);
 				this.setLocation(tmp);
 				this.actionsAvailable--;
 			}
 			else if(Game.map[tmp.x][tmp.y] instanceof CollectibleCell){
 				Collectible want = ((CollectibleCell)(Game.map[tmp.x][tmp.y])).getCollectible();
 				want.pickUp(this);
+				Game.map[tmp.x][tmp.y] = new CharacterCell(this);
 				this.setLocation(tmp);
 				this.actionsAvailable--;
 			}
 			else if(Game.map[tmp.x][tmp.y] instanceof CharacterCell){
 				throw new MovementException();
 			}
+			else if(Game.map[tmp.x][tmp.y] == null)
+				Game.map[tmp.x][tmp.y] = new CharacterCell(this);
 		}
 		else {
 			throw new MovementException();
