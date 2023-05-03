@@ -6,7 +6,6 @@ import model.characters.*;
 import model.collectibles.*;
 import model.world.*;
 
-
 public class Game {
 	
 	public static ArrayList<Hero> availableHeroes = new ArrayList<Hero>();
