@@ -1,10 +1,9 @@
 package model.characters;
 
 import engine.*;
-import exceptions.GameActionException;
-import model.collectibles.Vaccine;
-import model.world.Cell;
-import model.world.CollectibleCell;
+import exceptions.*;
+import model.collectibles.*;
+import model.world.*;
 
 public class Explorer extends Hero {
  
@@ -12,11 +11,11 @@ public class Explorer extends Hero {
 	public Explorer() {
 		
 	}
-	
 	public Explorer(String name, int maxHp, int attackDmg, int maxActions) {
 		super(name, maxHp, attackDmg, maxActions);
 	}
 	
+	//Methods
 	public void useSpecial() throws GameActionException {
 		super.useSpecial();
 		for(int i=0;i<15;i++) {

@@ -2,7 +2,7 @@ package model.characters;
 
 import java.awt.Point;
 import java.util.*;
-import engine.Game;
+import engine.*;
 import exceptions.*;
 import model.characters.*;
 import model.collectibles.*;
@@ -58,7 +58,7 @@ public abstract class Hero extends Character{
 		return supplyInventory;
 	}
 	
-	
+	//Methods
 	public void move(Direction d) throws MovementException {
 		Point location = this.getLocation();
 		Point tmp = new Point(location.x,location.y);
