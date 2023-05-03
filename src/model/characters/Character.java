@@ -73,11 +73,28 @@ public abstract class Character {
 	}
 	
 	public void attack() throws InvalidTargetException, NotEnoughActionsException  {
+		this.dealDamage(true);
+	}
+	
+	public void defend() throws InvalidTargetException, NotEnoughActionsException {
+		this.dealDamage(false);
+	}
+	
+	public void dealDamage(boolean attack) throws InvalidTargetException, NotEnoughActionsException {
 		Character target = this.target;
 		if (target != null && checkAdjacency(target)) {
-			target.currentHp = target.currentHp - this.attackDmg;
-//			if(target.currentHp==0)
-//				target.onCharacterDeath;
+			int damage = (attack)?this.attackDmg:(this.attackDmg/2);
+			target.currentHp = target.currentHp - damage;
+			if(target.currentHp==0) {
+				//target.onCharacterDeath;
+			}
+			else {
+				if(attack) {
+					target.setTarget(this);
+					target.defend();
+				}
+			}
+				
 		}
 		else {
 			throw new InvalidTargetException();
