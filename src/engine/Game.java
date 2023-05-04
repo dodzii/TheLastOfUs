@@ -5,6 +5,7 @@ import java.util.*;
 import exceptions.InvalidTargetException;
 import exceptions.NotEnoughActionsException;
 
+import java.awt.Point;
 import java.io.*;
 import model.characters.*;
 import model.collectibles.*;
@@ -49,6 +50,7 @@ public class Game {
 		map[0][0]=new CharacterCell(h);
 		availableHeroes.remove(h);
 		heroes.add(h);
+		h.setLocation(new Point(0,0));
 		int i=0;
 		while(i<5) {
 			int x = (int)(Math.random()*15);
@@ -93,6 +95,7 @@ public class Game {
 				Zombie z = new Zombie();
 				map[x][y]=new CharacterCell(z);
 				zombies.add(z);
+				z.setLocation(new Point(x,y));
 				i++;
 				if((x==1&&y==1)||(x==0&&y==1)||(x==1&&y==0)) {
 					map[x][y].setVisible(true);
@@ -242,6 +245,7 @@ public class Game {
 			if(map[x][y] instanceof CharacterCell && ((CharacterCell)map[x][y]).getCharacter()==null) {
 				Zombie z = new Zombie();
 				((CharacterCell)map[x][y]).setCharacter(z);
+				z.setLocation(new Point(x,y));
 				zombies.add(z);
 				break;
 			}
