@@ -77,19 +77,27 @@ public abstract class Hero extends Character{
 				}
 				else {
 				Game.map[tmp.x][tmp.y] = new CharacterCell(this);
+				((CharacterCell)Game.map[location.x][location.y]).setCharacter(null) ;
 				this.setLocation(tmp);
 				this.actionsAvailable--;
+				this.assignVisibilityAround();
 				}
 			}
 			else if(Game.map[tmp.x][tmp.y] instanceof CollectibleCell){
 				Collectible want = ((CollectibleCell)(Game.map[tmp.x][tmp.y])).getCollectible();
 				want.pickUp(this);
 				Game.map[tmp.x][tmp.y] = new CharacterCell(this);
+				((CharacterCell)Game.map[location.x][location.y]).setCharacter(null) ;
 				this.setLocation(tmp);
 				this.actionsAvailable--;
+				this.assignVisibilityAround();
 			}
 			else if(Game.map[tmp.x][tmp.y] instanceof CharacterCell&&((CharacterCell)Game.map[tmp.x][tmp.y]).getCharacter() == null) {
 				Game.map[tmp.x][tmp.y] = new CharacterCell(this);
+				((CharacterCell)Game.map[location.x][location.y]).setCharacter(null) ;
+				this.setLocation(tmp);
+				this.actionsAvailable--;
+				this.assignVisibilityAround();
 			}
 			else {
 				throw new MovementException();
@@ -98,7 +106,7 @@ public abstract class Hero extends Character{
 		else {
 			throw new MovementException();
 		}	
-		this.assignVisibilityAround();
+		
 	}
 	
 	public void assignVisibilityAround() {
@@ -109,35 +117,35 @@ public abstract class Hero extends Character{
 		int xl = tmpx - 1;
 		int yd = tmpy - 1;
 		
-		if(xr>=0 && xr<=14) {
+		if(xr>=0 && xr<=14 && Game.map[xr][tmpy] !=null) {
 			Game.map[xr][tmpy].setVisible(true);
 		}
 		
-		if(xl>=0 && xl<=14) {
+		if(xl>=0 && xl<=14 && Game.map[xl][tmpy] !=null) {
 			Game.map[xl][tmpy].setVisible(true);
 		}
 		
-		if(yu>=0 && yu<=14) {
+		if(yu>=0 && yu<=14 && Game.map[tmpx][yu]!=null) {
 			Game.map[tmpx][yu].setVisible(true);
 		}
 		
-		if(yd>=0 && yd<=14) {
+		if(yd>=0 && yd<=14 && Game.map[tmpx][yd]!=null) {
 			Game.map[tmpx][yd].setVisible(true);
 		}
 		
-		if(xr>=0 && xr<=14 && yu>=0 && yu<=14) {
+		if(xr>=0 && xr<=14 && yu>=0 && yu<=14 &&Game.map[xr][yu]!=null) {
 			Game.map[xr][yu].setVisible(true);
 		}
 		
-		if(xr>=0 && xr<=14 && yd>=0 && yd<=14) {
+		if(xr>=0 && xr<=14 && yd>=0 && yd<=14 && Game.map[xr][yd]!=null) {
 			Game.map[xr][yd].setVisible(true);
 		}
 		
-		if(xl>=0 && xl<=14 && yu>=0 && yu<=14) {
+		if(xl>=0 && xl<=14 && yu>=0 && yu<=14 && Game.map[xl][yu]!=null) {
 			Game.map[xl][yu].setVisible(true);
 		}
 		
-		if(xl>=0 && xl<=14 && yd>=0 && yd<=14) {
+		if(xl>=0 && xl<=14 && yd>=0 && yd<=14 &&Game.map[xl][yd]!=null) {
 			Game.map[xl][yd].setVisible(true);
 		}
 		
