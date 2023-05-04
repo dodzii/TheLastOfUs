@@ -59,14 +59,17 @@ public abstract class Hero extends Character{
 	}
 	
 	//Methods
-	public void move(Direction d) throws MovementException {
+	public void move(Direction d) throws MovementException,NotEnoughActionsException {
 		Point location = this.getLocation();
 		Point tmp = new Point(location.x,location.y);
+		if (this.getActionsAvailable() == 0) {
+			throw new NotEnoughActionsException();
+		}
 		switch(d) {
-			case UP: tmp.y++; break;
-			case DOWN: tmp.y--;break;
-			case LEFT: tmp.x--;break;
-			case RIGHT: tmp.x++;break;
+			case UP: tmp.x++; break;
+			case DOWN: tmp.x--;break;
+			case LEFT: tmp.y--;break;
+			case RIGHT: tmp.y++;break;
 		}
 		if((tmp.x)<=14 &&(tmp.x)>=0&& (tmp.y)>=0&& (tmp.y<=14))  {
 			if(Game.map[tmp.x][tmp.y] instanceof TrapCell) {
@@ -76,11 +79,11 @@ public abstract class Hero extends Character{
 					this.onCharacterDeath();
 				}
 				else {
-				Game.map[tmp.x][tmp.y] = new CharacterCell(this);
-				((CharacterCell)Game.map[location.x][location.y]).setCharacter(null) ;
-				this.setLocation(tmp);
-				this.actionsAvailable--;
-				this.assignVisibilityAround();
+					Game.map[tmp.x][tmp.y] = new CharacterCell(this);
+					((CharacterCell)Game.map[location.x][location.y]).setCharacter(null) ;
+					this.setLocation(tmp);
+					this.actionsAvailable--;
+					this.assignVisibilityAround();
 				}
 			}
 			else if(Game.map[tmp.x][tmp.y] instanceof CollectibleCell){

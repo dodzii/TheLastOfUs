@@ -45,7 +45,7 @@ public class Game {
     }
 
     public static void startGame(Hero h) {
-    	
+    	map = new Cell[15][15];
 		map[0][0]=new CharacterCell(h);
 		availableHeroes.remove(h);
 		heroes.add(h);
