@@ -86,12 +86,12 @@ public abstract class Character {
 		Character target = this.target;
 		if (target != null && checkAdjacency(target)) {
 			int damage = (attack)? this.attackDmg :  (this.attackDmg/2);
-			target.currentHp = target.currentHp - damage;
+			target.setCurrentHp(target.getCurrentHp()- damage);
 			if(attack) {
 				target.setTarget(this);
 				target.defend();
 			}
-			if(target.currentHp==0) {
+			if(target.getCurrentHp()==0) {
 				target.onCharacterDeath();	
 			}
 		

@@ -13,7 +13,7 @@ public class Medic extends Hero{
 	}
 	
 	//Methods
-	public void heal() throws InvalidTargetException ,NoAvailableResourcesException {
+	public void heal() throws GameActionException {
 		if(this.isSpecialAction()) {
 			if(!this.getSupplyInventory().isEmpty()) {
 				if(this.getTarget()!=null && this.getTarget() instanceof Hero) {
@@ -22,7 +22,7 @@ public class Medic extends Hero{
 					target.setActionsAvailable(target.getMaxActions());
 				}
 				else {
-					throw new InvalidTargetException();
+					throw new InvalidTargetException("The target can't be zombie.");
 				}
 			}
 			else {
