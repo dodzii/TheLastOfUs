@@ -146,17 +146,11 @@ public class Game {
 	}
 	public static void endTurn() throws InvalidTargetException, NotEnoughActionsException {
 		setAllInvisible();
-		for(int i=0;i<15;i++) {
-			for(int j=0;j<15;j++) {
-				Cell temp=map[i][j];
-				if(temp instanceof CharacterCell && ((CharacterCell)temp).getCharacter() instanceof Hero) {
-					Hero h=(Hero) ((CharacterCell)temp).getCharacter();
-					h.setActionsAvailable(h.getMaxActions());
-					h.setTarget(null);
-					h.setSpecialAction(false);;
-					h.assignVisibilityAround();
-				}
-			}
+		for(Hero x : heroes) {
+			x.setActionsAvailable(x.getMaxActions());
+			x.setTarget(null);
+			x.setSpecialAction(false);
+			x.assignVisibilityAround();
 		}
 		for(int i=0;i<15;i++) {
 			for(int j=0;j<15;j++) {
@@ -173,44 +167,55 @@ public class Game {
 						Hero h = (Hero)((CharacterCell)map[x][u]).getCharacter();
 						z.setTarget(h);
 						z.attack();
+						z.setTarget(null);
 					}
 					else if((d>=0&&d<=14)&& map[x][d] instanceof CharacterCell && ((CharacterCell)map[x][d]).getCharacter() instanceof Hero) {
 						Hero h = (Hero)((CharacterCell)map[x][d]).getCharacter();
 						z.setTarget(h);
 						z.attack();
+						z.setTarget(null);
 					}
 					else if((l>=0&&l<=14)&& map[l][y] instanceof CharacterCell && ((CharacterCell)map[l][y]).getCharacter() instanceof Hero) {
 						Hero h = (Hero)((CharacterCell)map[l][y]).getCharacter();
 						z.setTarget(h);
 						z.attack();
+						z.setTarget(null);
 					}
 					else if((r>=0&&r<=14)&& map[r][y] instanceof CharacterCell && ((CharacterCell)map[r][y]).getCharacter() instanceof Hero) {
 						Hero h = (Hero)((CharacterCell)map[r][y]).getCharacter();
 						z.setTarget(h);
 						z.attack();
+						z.setTarget(null);
 					}
 					else if((u>=0&&u<=14)&&(l>=0&&l<=14)&& map[l][u] instanceof CharacterCell && ((CharacterCell)map[l][u]).getCharacter() instanceof Hero) {
 						Hero h = (Hero)((CharacterCell)map[l][u]).getCharacter();
 						z.setTarget(h);
 						z.attack();
+						z.setTarget(null);
 					}
 					else if((u>=0&&u<=14)&&(r>=0&&r<=14)&& map[r][u] instanceof CharacterCell && ((CharacterCell)map[r][u]).getCharacter() instanceof Hero) {
 						Hero h = (Hero)((CharacterCell)map[r][u]).getCharacter();
 						z.setTarget(h);
 						z.attack();
+						z.setTarget(null);
 					}
 					else if((d>=0&&d<=14)&&(l>=0&&l<=14)&& map[l][d] instanceof CharacterCell && ((CharacterCell)map[l][d]).getCharacter() instanceof Hero) {
 						Hero h = (Hero)((CharacterCell)map[l][d]).getCharacter();
 						z.setTarget(h);
 						z.attack();
+						z.setTarget(null);
 					}
 					else if((d>=0&&d<=14)&&(r>=0&&r<=14)&& map[r][d] instanceof CharacterCell && ((CharacterCell)map[r][d]).getCharacter() instanceof Hero) {
 						Hero h = (Hero)((CharacterCell)map[r][d]).getCharacter();
 						z.setTarget(h);
 						z.attack();
+						z.setTarget(null);
 					}
 				}
 			}
+		}
+		for(Zombie z : zombies) {
+			z.setTarget(null);
 		}
 		respawnZombie();
 	}

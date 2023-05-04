@@ -78,6 +78,7 @@ public abstract class Hero extends Character{
 				if(this.getCurrentHp()==0) {
 					this.onCharacterDeath();
 					Game.map[tmp.x][tmp.y] = new CharacterCell(null);
+					this.assignVisibilityAround();
 				}
 				else {
 					Game.map[tmp.x][tmp.y] = new CharacterCell(this);

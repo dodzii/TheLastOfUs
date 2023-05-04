@@ -102,7 +102,8 @@ public abstract class Character {
 	}
 
 	public void onCharacterDeath() {
-		((CharacterCell)Game.map[location.x][location.y]).setCharacter(null);
+		Point p = this.getLocation();
+		((CharacterCell)Game.map[p.x][p.y]).setCharacter(null);
 		
 	}
 	
