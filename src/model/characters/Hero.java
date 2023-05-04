@@ -72,9 +72,14 @@ public abstract class Hero extends Character{
 			if(Game.map[tmp.x][tmp.y] instanceof TrapCell) {
 				int Damage = ((TrapCell)(Game.map[tmp.x][tmp.y])).getTrapDamage();
 				this.setCurrentHp(this.getCurrentHp()-Damage);
+				if(this.getCurrentHp()==0) {
+					this.onCharacterDeath();
+				}
+				else {
 				Game.map[tmp.x][tmp.y] = new CharacterCell(this);
 				this.setLocation(tmp);
 				this.actionsAvailable--;
+				}
 			}
 			else if(Game.map[tmp.x][tmp.y] instanceof CollectibleCell){
 				Collectible want = ((CollectibleCell)(Game.map[tmp.x][tmp.y])).getCollectible();
@@ -83,11 +88,12 @@ public abstract class Hero extends Character{
 				this.setLocation(tmp);
 				this.actionsAvailable--;
 			}
-			else if(Game.map[tmp.x][tmp.y] instanceof CharacterCell){
+			else if(Game.map[tmp.x][tmp.y] instanceof CharacterCell&&((CharacterCell)Game.map[tmp.x][tmp.y]).getCharacter() == null) {
+				Game.map[tmp.x][tmp.y] = new CharacterCell(this);
+			}
+			else {
 				throw new MovementException();
 			}
-			else if(Game.map[tmp.x][tmp.y] == null)
-				Game.map[tmp.x][tmp.y] = new CharacterCell(this);
 		}
 		else {
 			throw new MovementException();

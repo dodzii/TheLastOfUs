@@ -99,7 +99,15 @@ public class Game {
 				} 
 			}
 		}
+		for(i=0;i<15;i++) {
+			for(int j=0;j<15;j++) {
+				if(map[i][j]==null) {
+					map[i][j]=new CharacterCell(null);
+				}
+			}
+		}
     }
+    
 	public static boolean checkGameOver() {
 		if(heroes.size()==0)
 			return true;
@@ -221,7 +229,7 @@ public class Game {
 						continue;
 					}
 				}
-				else if(cell!=null) {
+				else if(cell!=null){
 					cell.setVisible(false);
 				}
 			}
@@ -231,9 +239,9 @@ public class Game {
 		while(true) {
 			int x = (int)(Math.random()*15);
 			int y = (int)(Math.random()*15);
-			if(map[x][y]==null) {
+			if(map[x][y] instanceof CharacterCell && ((CharacterCell)map[x][y]).getCharacter()==null) {
 				Zombie z = new Zombie();
-				map[x][y] = new CharacterCell(z);
+				((CharacterCell)map[x][y]).setCharacter(z);
 				zombies.add(z);
 				break;
 			}

@@ -5,6 +5,7 @@ import java.awt.Point;
 import engine.Game;
 import exceptions.InvalidTargetException;
 import exceptions.NotEnoughActionsException;
+import model.world.CharacterCell;
 
 public abstract class Character {
 	
@@ -86,16 +87,14 @@ public abstract class Character {
 		if (target != null && checkAdjacency(target)) {
 			int damage = (attack)? this.attackDmg :  (this.attackDmg/2);
 			target.currentHp = target.currentHp - damage;
+			if(attack) {
+				target.setTarget(this);
+				target.defend();
+			}
 			if(target.currentHp==0) {
-				target.onCharacterDeath();
+				target.onCharacterDeath();	
 			}
-			else {
-				if(attack) {
-					target.setTarget(this);
-					target.defend();
-				}
-			}
-				
+		
 		}
 		else {
 			throw new InvalidTargetException();
@@ -103,7 +102,7 @@ public abstract class Character {
 	}
 
 	public void onCharacterDeath() {
-		Game.map[location.x][location.y]=null;
+		((CharacterCell)Game.map[location.x][location.y]).setCharacter(null);
 		
 	}
 	
