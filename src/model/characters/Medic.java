@@ -13,7 +13,7 @@ public class Medic extends Hero{
 	}
 	
 	//Methods
-	public void heal() throws GameActionException {
+	public void heal() throws InvalidTargetException ,NoAvailableResourcesException {
 		if(this.isSpecialAction()) {
 			if(!this.getSupplyInventory().isEmpty()) {
 				if(this.getTarget()!=null && this.getTarget() instanceof Hero) {
@@ -30,5 +30,12 @@ public class Medic extends Hero{
 			}
 		}
 	}
+	@Override
+	public void useSpecial() throws GameActionException {
+		super.useSpecial();
+		this.heal();
+	}
+	
+	
 
 }

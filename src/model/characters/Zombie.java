@@ -1,6 +1,8 @@
 package model.characters;
 
 import engine.Game;
+import exceptions.InvalidTargetException;
+import exceptions.NotEnoughActionsException;
 
 public class Zombie extends Character{
 	private static int ZOMBIES_COUNT =1;
@@ -16,6 +18,18 @@ public class Zombie extends Character{
 		return ZOMBIES_COUNT;
 	}
 	
+	
+	
+	@Override
+	public void attack() throws InvalidTargetException, NotEnoughActionsException {
+		if(this.getTarget() instanceof Hero) {
+			super.attack();
+			}
+			else {
+				throw new InvalidTargetException();
+			}
+	}
+
 	public void onCharacterDeath() {
 		super.onCharacterDeath();
 		Game.zombies.remove(this);
