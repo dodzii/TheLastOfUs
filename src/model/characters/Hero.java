@@ -77,6 +77,8 @@ public abstract class Hero extends Character{
 				this.setCurrentHp(this.getCurrentHp()-Damage);
 				if(this.getCurrentHp()==0) {
 					this.onCharacterDeath();
+					Game.map[tmp.x][tmp.y] = new CharacterCell(null);
+					Game.map[tmp.x][tmp.y].setVisible(true);
 				}
 				else {
 					Game.map[tmp.x][tmp.y] = new CharacterCell(this);
@@ -119,6 +121,7 @@ public abstract class Hero extends Character{
 		int yu = tmpy + 1;
 		int xl = tmpx - 1;
 		int yd = tmpy - 1;
+		Game.map[tmpx][tmpy].setVisible(true);
 		
 		if(xr>=0 && xr<=14 && Game.map[xr][tmpy] !=null) {
 			Game.map[xr][tmpy].setVisible(true);
