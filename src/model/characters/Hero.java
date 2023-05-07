@@ -60,6 +60,10 @@ public abstract class Hero extends Character{
 	
 	//Methods
 	public void move(Direction d) throws MovementException,NotEnoughActionsException {
+		if(this.getCurrentHp()==0) {
+			this.onCharacterDeath();
+		}
+		else {
 		Point location = this.getLocation();
 		Point tmp = new Point(location.x,location.y);
 		if (this.getActionsAvailable() == 0) {
@@ -111,7 +115,7 @@ public abstract class Hero extends Character{
 		else {
 			throw new MovementException();
 		}	
-		
+		}
 	}
 	
 	public void assignVisibilityAround() {
@@ -182,12 +186,6 @@ public abstract class Hero extends Character{
 					{
 						this.actionsAvailable--;
 						vaccine.use(this);
-						Game.zombies.remove(target);
-						Point location=target.getLocation();
-						Hero hero=Game.availableHeroes.remove(0);
-						((CharacterCell)Game.map[location.x][location.y]).setCharacter(hero);
-						hero.setLocation(location);
-						hero.assignVisibilityAround();
 					}
 					else
 						throw new NotEnoughActionsException();
@@ -219,6 +217,6 @@ public abstract class Hero extends Character{
 	public void onCharacterDeath() {
 		super.onCharacterDeath();
 		Game.heroes.remove(this);
-		Game.availableHeroes.add((Hero)this);
+//		Game.availableHeroes.add((Hero)this);
 	}	
 }

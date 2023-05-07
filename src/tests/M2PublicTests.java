@@ -2224,7 +2224,7 @@ public class M2PublicTests {
 
 			Method startGame = gameClass.getMethod("startGame", Hero.class);
 			startGame.invoke(gameClass, character1);
-
+			System.out.println(((CharacterCell)tmpMap[0][0]).getCharacter());
 			for (int i = 0; i <= 2; i++) {
 				for (int j = 0; j <= 2; j++) {
 					if (i == 0 && j == 0)
@@ -2246,7 +2246,8 @@ public class M2PublicTests {
 
 		Method attackMethod = characterClass.getMethod("attack");
 		attackMethod.invoke(character1);
-
+		System.out.println(((CharacterCell)tmpMap[0][0]).getCharacter());
+		System.out.println(((CharacterCell)tmpMap[1][1]).getCharacter());
 		boolean isDead = ((CharacterCell) tmpMap[1][1]).getCharacter() == null;
 		isDead = isDead && !((ArrayList<Zombie>) zombieField.get(gameClass)).contains(character2);
 		assertEquals("The Zombie is considered dead if it nolonger exists on the map and in the Zombies array ", isDead,

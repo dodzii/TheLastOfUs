@@ -47,15 +47,25 @@ public class Game {
 
     public static void startGame(Hero h) {
     	map = new Cell[15][15];
-		map[0][0]=new CharacterCell(h);
+//		map[0][0]=new CharacterCell(h);
 		availableHeroes.remove(h);
-		heroes.add(h);
-		h.setLocation(new Point(0,0));
+		
+		
 		int i=0;
+		for(i=0;i<15;i++) {
+			for(int j=0;j<15;j++) {
+					map[i][j]=new CharacterCell(null);
+			}
+		}
+		heroes.add(h);
+		map[0][0]=new CharacterCell(h);
+		((CharacterCell)map[0][0]).setCharacter(h);
+		h.setLocation(new Point(0,0));
+		i=0;
 		while(i<5) {
 			int x = (int)(Math.random()*15);
 			int y = (int)(Math.random()*15);
-			if(map[x][y]==null) {
+			if((map[x][y] instanceof CharacterCell) && (((CharacterCell)map[x][y]).getCharacter() == null)) {
 				map[x][y]=new CollectibleCell(new Vaccine());
 				i++;
 			}
@@ -64,7 +74,7 @@ public class Game {
 		while(i<5) {
 			int x = (int)(Math.random()*15);
 			int y = (int)(Math.random()*15);
-			if(map[x][y]==null) {
+			if((map[x][y] instanceof CharacterCell) && (((CharacterCell)map[x][y]).getCharacter() == null)) {
 				map[x][y]=new CollectibleCell(new Supply());
 				i++;	
 			}
@@ -73,7 +83,7 @@ public class Game {
 		while(i<5) {
 			int x = (int)(Math.random()*15);
 			int y = (int)(Math.random()*15);
-			if(map[x][y]==null) {
+			if((map[x][y] instanceof CharacterCell) && (((CharacterCell)map[x][y]).getCharacter() == null)) {
 				map[x][y]=new TrapCell();
 				i++;				
 			}
@@ -82,7 +92,7 @@ public class Game {
 		while(i<10) {
 			int x = (int)(Math.random()*15);
 			int y = (int)(Math.random()*15);
-			if(map[x][y]==null) {
+			if((map[x][y] instanceof CharacterCell) && (((CharacterCell)map[x][y]).getCharacter() == null)) {
 				Zombie z = new Zombie();
 				map[x][y]=new CharacterCell(z);
 				zombies.add(z);
@@ -90,13 +100,10 @@ public class Game {
 				i++;				 
 			}
 		}
-		for(i=0;i<15;i++) {
-			for(int j=0;j<15;j++) {
-				if(map[i][j]==null) {
-					map[i][j]=new CharacterCell(null);
-				}
-			}
-		}
+		
+//		map[0][0]=new CharacterCell(h);
+//		((CharacterCell)map[0][0]).setCharacter(h);
+//		h.setLocation(new Point(0,0));
 		map[0][0].setVisible(true);
 		map[1][1].setVisible(true);
 		map[0][1].setVisible(true);
@@ -163,53 +170,45 @@ public class Game {
 					int r = x+1;
 					int u = y+1;
 					int d = y-1;
-					if((u>=0&&u<=14)&& map[x][u] instanceof CharacterCell && ((CharacterCell)map[x][u]).getCharacter() instanceof Hero) {
+					if((u>=0&&u<=14)&& map[x][u] instanceof CharacterCell && ((CharacterCell)map[x][u]).getCharacter()!=null && ((CharacterCell)map[x][u]).getCharacter() instanceof Hero) {
 						Hero h = (Hero)((CharacterCell)map[x][u]).getCharacter();
 						z.setTarget(h);
 						z.attack();
-						z.setTarget(null);
 					}
-					else if((d>=0&&d<=14)&& map[x][d] instanceof CharacterCell && ((CharacterCell)map[x][d]).getCharacter() instanceof Hero) {
+					else if((d>=0&&d<=14)&& map[x][d] instanceof CharacterCell && ((CharacterCell)map[x][d]).getCharacter()!=null && ((CharacterCell)map[x][d]).getCharacter() instanceof Hero) {
 						Hero h = (Hero)((CharacterCell)map[x][d]).getCharacter();
 						z.setTarget(h);
-						z.attack();
-						z.setTarget(null);
+						z.attack();						
 					}
-					else if((l>=0&&l<=14)&& map[l][y] instanceof CharacterCell && ((CharacterCell)map[l][y]).getCharacter() instanceof Hero) {
+					else if((l>=0&&l<=14)&& map[l][y] instanceof CharacterCell && ((CharacterCell)map[l][y]).getCharacter()!=null && ((CharacterCell)map[l][y]).getCharacter() instanceof Hero) {
 						Hero h = (Hero)((CharacterCell)map[l][y]).getCharacter();
 						z.setTarget(h);
-						z.attack();
-						z.setTarget(null);
+						z.attack();						
 					}
-					else if((r>=0&&r<=14)&& map[r][y] instanceof CharacterCell && ((CharacterCell)map[r][y]).getCharacter() instanceof Hero) {
+					else if((r>=0&&r<=14)&& map[r][y] instanceof CharacterCell && ((CharacterCell)map[r][y]).getCharacter()!=null &&((CharacterCell)map[r][y]).getCharacter() instanceof Hero) {
 						Hero h = (Hero)((CharacterCell)map[r][y]).getCharacter();
 						z.setTarget(h);
-						z.attack();
-						z.setTarget(null);
+						z.attack();						
 					}
-					else if((u>=0&&u<=14)&&(l>=0&&l<=14)&& map[l][u] instanceof CharacterCell && ((CharacterCell)map[l][u]).getCharacter() instanceof Hero) {
+					else if((u>=0&&u<=14)&&(l>=0&&l<=14)&& map[l][u] instanceof CharacterCell && ((CharacterCell)map[l][u]).getCharacter()!=null && ((CharacterCell)map[l][u]).getCharacter() instanceof Hero) {
 						Hero h = (Hero)((CharacterCell)map[l][u]).getCharacter();
 						z.setTarget(h);
-						z.attack();
-						z.setTarget(null);
+						z.attack();						
 					}
-					else if((u>=0&&u<=14)&&(r>=0&&r<=14)&& map[r][u] instanceof CharacterCell && ((CharacterCell)map[r][u]).getCharacter() instanceof Hero) {
+					else if((u>=0&&u<=14)&&(r>=0&&r<=14)&& map[r][u] instanceof CharacterCell && ((CharacterCell)map[r][u]).getCharacter()!=null && ((CharacterCell)map[r][u]).getCharacter() instanceof Hero) {
 						Hero h = (Hero)((CharacterCell)map[r][u]).getCharacter();
 						z.setTarget(h);
-						z.attack();
-						z.setTarget(null);
+						z.attack();						
 					}
-					else if((d>=0&&d<=14)&&(l>=0&&l<=14)&& map[l][d] instanceof CharacterCell && ((CharacterCell)map[l][d]).getCharacter() instanceof Hero) {
+					else if((d>=0&&d<=14)&&(l>=0&&l<=14)&& map[l][d] instanceof CharacterCell && ((CharacterCell)map[l][d]).getCharacter()!=null &&((CharacterCell)map[l][d]).getCharacter() instanceof Hero) {
 						Hero h = (Hero)((CharacterCell)map[l][d]).getCharacter();
 						z.setTarget(h);
-						z.attack();
-						z.setTarget(null);
+						z.attack();					
 					}
-					else if((d>=0&&d<=14)&&(r>=0&&r<=14)&& map[r][d] instanceof CharacterCell && ((CharacterCell)map[r][d]).getCharacter() instanceof Hero) {
+					else if((d>=0&&d<=14)&&(r>=0&&r<=14)&& map[r][d] instanceof CharacterCell && ((CharacterCell)map[r][d]).getCharacter() != null && ((CharacterCell)map[r][d]).getCharacter() instanceof Hero) {
 						Hero h = (Hero)((CharacterCell)map[r][d]).getCharacter();
 						z.setTarget(h);
 						z.attack();
-						z.setTarget(null);
 					}
 				}
 			}

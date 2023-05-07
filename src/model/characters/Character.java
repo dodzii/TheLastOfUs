@@ -62,7 +62,7 @@ public abstract class Character {
 		this.target = target;
 	}
 
-	public boolean checkAdjacency(Character target) {
+	public boolean checkAdjacency (Character target) {
 		int x = this.getLocation().x;
 		int y = this.getLocation().y;
 		int xt = target.getLocation().x;
@@ -75,35 +75,63 @@ public abstract class Character {
 	}
 	
 	public void attack() throws InvalidTargetException, NotEnoughActionsException  {
-		this.dealDamage(true);
-	}
-	
-	public void defend() throws InvalidTargetException, NotEnoughActionsException {
-		this.dealDamage(false);
-	}
-	
-	public void dealDamage(boolean attack) throws InvalidTargetException, NotEnoughActionsException {
-		Character target = this.target;
-		if (target != null && checkAdjacency(target)) {
-			int damage = (attack)? this.attackDmg :  (this.attackDmg/2);
-			target.setCurrentHp(target.getCurrentHp()- damage);
-			if(attack) {
-				target.setTarget(this);
-				target.defend();
-			}
-			if(target.getCurrentHp()==0) {
-				target.onCharacterDeath();	
+//		this.dealDamage(true);
+		Character tmp = this.getTarget();
+		if (tmp != null && this.checkAdjacency(tmp)) {
+			int damage =  this.getAttackDmg() ;
+			tmp.setCurrentHp(tmp.getCurrentHp()- damage);
+			tmp.defend(this);
+			
+			if(tmp.getCurrentHp()==0) {
+				tmp.onCharacterDeath();
 			}
 		
 		}
 		else {
 			throw new InvalidTargetException();
 		}
+		
 	}
+	
+	public void defend(Character c) throws InvalidTargetException, NotEnoughActionsException {
+//		this.dealDamage(false);
+		if (c != null && checkAdjacency(c)) {
+			int damage =  (this.getAttackDmg()/2);
+			c.setCurrentHp(c.getCurrentHp()- damage);
+			if(c.getCurrentHp()==0) {
+				c.onCharacterDeath();
+			}
+		
+		}
+		else {
+			throw new InvalidTargetException();
+		}
+		
+	}
+	
+//	public void dealDamage(boolean attack) throws InvalidTargetException, NotEnoughActionsException {
+//		Character target = this.getTarget();
+//		if (target != null && checkAdjacency(target)) {
+//			int damage = (attack)? this.attackDmg :  (this.attackDmg/2);
+//			target.setCurrentHp(target.getCurrentHp()- damage);
+//			Character tmp=this.getTarget();
+//			if(attack) {
+//				target.setTarget(this);
+//				target.defend();
+//			}
+//			if(tmp.getCurrentHp()==0) {
+//				tmp.onCharacterDeath();
+//			}
+//		
+//		}
+//		else {
+//			throw new InvalidTargetException();
+//		}
+//	}
 
 	public void onCharacterDeath() {
 		Point p = this.getLocation();
-		((CharacterCell)Game.map[p.x][p.y]).setCharacter(null);
+		Game.map[p.x][p.y] = new CharacterCell(null);
 		
 	}
 	

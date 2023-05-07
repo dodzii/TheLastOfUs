@@ -19,7 +19,7 @@ public class Medic extends Hero{
 				if(this.getTarget()!=null && this.getTarget() instanceof Hero) {
 					Hero target=(Hero) this.getTarget();
 					this.getSupplyInventory().get(0).use(target);
-					target.setActionsAvailable(target.getMaxActions());
+					target.setCurrentHp(this.getMaxHp());
 				}
 				else {
 					throw new InvalidTargetException("The target can't be zombie.");
@@ -32,8 +32,18 @@ public class Medic extends Hero{
 	}
 	@Override
 	public void useSpecial() throws GameActionException {
+		if(this.getTarget() instanceof Hero) {
+			if(!this.getSupplyInventory().isEmpty()) {
 		super.useSpecial();
 		this.heal();
+			}
+			else {
+				throw new NoAvailableResourcesException();
+			}
+		}
+		else {
+			throw new InvalidTargetException();
+		}
 	}
 	
 	
