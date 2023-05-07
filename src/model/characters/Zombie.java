@@ -30,7 +30,7 @@ public class Zombie extends Character{
 //				if(cell instanceof CharacterCell && ((CharacterCell)cell).getCharacter() instanceof Zombie) {
 //					Zombie z =(Zombie)((CharacterCell)cell).getCharacter();
 		
-		Zombie z =this;		
+					Zombie z =this;		
 					int x = z.getLocation().x;
 					int y = z.getLocation().y;
 					int l = x-1;
@@ -77,7 +77,7 @@ public class Zombie extends Character{
 //				}
 //			}
 //		}
-		if(this.getTarget() instanceof Hero) {
+		if(this.getTarget() instanceof Hero && this.getTarget()!=null) {
 			super.attack();
 			}
 			else {

@@ -82,7 +82,7 @@ public abstract class Character {
 			tmp.setCurrentHp(tmp.getCurrentHp()- damage);
 			tmp.defend(this);
 			
-			if(tmp.getCurrentHp()==0) {
+			if(tmp.getCurrentHp()<=0) {
 				tmp.onCharacterDeath();
 			}
 		
@@ -98,7 +98,7 @@ public abstract class Character {
 		if (c != null && checkAdjacency(c)) {
 			int damage =  (this.getAttackDmg()/2);
 			c.setCurrentHp(c.getCurrentHp()- damage);
-			if(c.getCurrentHp()==0) {
+			if(c.getCurrentHp()<=0) {
 				c.onCharacterDeath();
 			}
 		
