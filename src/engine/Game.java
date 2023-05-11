@@ -171,21 +171,23 @@ public class Game {
 	}
 
 	public static void respawnZombie() {
-		while (true) {
-			int x = (int) (Math.random() * 15);
-			int y = (int) (Math.random() * 15);
-			if (map[x][y] instanceof CharacterCell && ((CharacterCell) map[x][y]).getCharacter() == null) {
-				Zombie z = new Zombie();
-				((CharacterCell) map[x][y]).setCharacter(z);
-				z.setLocation(new Point(x, y));
-				zombies.add(z);
-				break;
+		if (!isMapFull()) {
+			while (true) {
+				int x = (int) (Math.random() * 15);
+				int y = (int) (Math.random() * 15);
+				if (map[x][y] instanceof CharacterCell && ((CharacterCell) map[x][y]).getCharacter() == null) {
+					Zombie z = new Zombie();
+					((CharacterCell) map[x][y]).setCharacter(z);
+					z.setLocation(new Point(x, y));
+					zombies.add(z);
+					break;
+				}
 			}
 		}
 	}
 	
 	public static void respawnZombie(Point locationDead) {
-		if (!isMapFull())
+		if (!isMapFull()) {
 			while (true) {
 				int x = (int) (Math.random() * 15);
 				int y = (int) (Math.random() * 15);
@@ -198,6 +200,7 @@ public class Game {
 					break;
 				}
 			}
+		}
 	}
 	public static boolean isMapFull() {
 		for(int i=0;i<15;i++) {
