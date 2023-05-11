@@ -166,12 +166,12 @@ public abstract class Hero extends Character {
 
 	public void useSpecial() throws GameActionException {
 		if (!this.supplyInventory.isEmpty()) {
-			if (!(this.actionsAvailable == 0)) {
+//			if (!(this.actionsAvailable == 0)) {
 				supplyInventory.get(0).use(this);
 				this.setSpecialAction(true);
-			} else {
-				throw new NotEnoughActionsException();
-			}
+//			} else {
+//				throw new NotEnoughActionsException();
+//			}
 		} else {
 			throw new NoAvailableResourcesException();
 		}
@@ -180,10 +180,10 @@ public abstract class Hero extends Character {
 	public void cure() throws GameActionException {
 		Character target = this.getTarget();
 		if (target != null && target instanceof Zombie && this.checkAdjacency(target)) {
-			if (!this.vaccineInventory.isEmpty()) {
+			if (!this.getVaccineInventory().isEmpty()) {
 				Vaccine vaccine = this.vaccineInventory.get(0);
-				if (actionsAvailable > 0) {
-					this.actionsAvailable--;
+				if (this.getActionsAvailable() > 0) {
+					this.setActionsAvailable(this.getActionsAvailable()-1);
 					vaccine.use(this);
 				} else
 					throw new NotEnoughActionsException();
@@ -206,6 +206,7 @@ public abstract class Hero extends Character {
 		} else
 			throw new NotEnoughActionsException();
 	}
+	
 
 	public void onCharacterDeath() {
 		super.onCharacterDeath();
