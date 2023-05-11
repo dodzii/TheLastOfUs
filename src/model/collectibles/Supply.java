@@ -18,8 +18,8 @@ public class Supply implements Collectible{
 	}
 
 	public void use(Hero h) throws NoAvailableResourcesException {
-		if(h!= null) {
-		ArrayList<Supply> supplyInventory =h.getSupplyInventory();
+		if(h!= null && !h.getSupplyInventory().isEmpty()) {
+			ArrayList<Supply> supplyInventory =h.getSupplyInventory();
 		if(supplyInventory.contains(this)) {
 			supplyInventory.remove(this);
 		}

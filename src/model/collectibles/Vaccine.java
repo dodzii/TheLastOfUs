@@ -22,7 +22,7 @@ public class Vaccine implements Collectible{
 	}
 
 	public void use(Hero h) throws NoAvailableResourcesException {
-		if(h!=null) {
+		if(h!=null && !h.getVaccineInventory().isEmpty()) {
 			ArrayList<Vaccine> vaccineInventory=h.getVaccineInventory();
 			if(vaccineInventory.contains(this)) {
 				vaccineInventory.remove(this);

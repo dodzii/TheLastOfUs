@@ -93,6 +93,11 @@ public abstract class Character {
 		
 	}
 	
+	public  boolean  checkEqual() {
+		return this.getLocation().x == this.getTarget().getLocation().x && this.getLocation().y == this.getTarget().getLocation().y;
+		//return this.getName().equals(target.getName()) && this.getLocation().equals(target.getLocation()) &&  this.getMaxHp()==target.getMaxHp() && this.getCurrentHp() == target.getCurrentHp();
+	}
+	
 	public void defend(Character c) throws InvalidTargetException, NotEnoughActionsException {
 //		this.dealDamage(false);
 		if (c != null && checkAdjacency(c)) {
