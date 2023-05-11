@@ -6,6 +6,6 @@ public interface Collectible {
 	
 	
 	public void pickUp(Hero h);
-	public void use(Hero h) throws NoAvailableResourcesException;
+	public void use(Hero h) throws NoAvailableResourcesException, InvalidTargetException;
 
 }

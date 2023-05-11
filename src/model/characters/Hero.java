@@ -89,6 +89,7 @@ public abstract class Hero extends Character {
 					if (this.getCurrentHp() == 0) {
 						this.onCharacterDeath();
 						Game.map[tmp.x][tmp.y] = new CharacterCell(null);
+						this.setLocation(tmp);
 						this.assignVisibilityAround();
 					} else {
 						Game.map[tmp.x][tmp.y] = new CharacterCell(this);
@@ -196,7 +197,7 @@ public abstract class Hero extends Character {
 
 	public void attack() throws InvalidTargetException, NotEnoughActionsException {
 		if (actionsAvailable > 0) {
-			if (this.getTarget() instanceof Zombie) {
+			if (this.getTarget() instanceof Zombie  && this.checkAdjacency(this.getTarget())) {
 				super.attack();
 				actionsAvailable--;
 			} else {

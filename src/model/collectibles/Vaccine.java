@@ -21,8 +21,12 @@ public class Vaccine implements Collectible{
 		}	
 	}
 
-	public void use(Hero h) throws NoAvailableResourcesException {
+	public void use(Hero h) throws NoAvailableResourcesException , InvalidTargetException {
 		if(h!=null && !h.getVaccineInventory().isEmpty()) {
+			if(!(h.getTarget() instanceof Zombie)) {
+				throw new InvalidTargetException();
+			}
+			else {
 			ArrayList<Vaccine> vaccineInventory=h.getVaccineInventory();
 			if(vaccineInventory.contains(this)) {
 				vaccineInventory.remove(this);
@@ -32,11 +36,13 @@ public class Vaccine implements Collectible{
 				((CharacterCell)Game.map[location.x][location.y]).setCharacter(hero);
 				hero.setLocation(location);
 				Game.heroes.add(hero);
+				hero.assignVisibilityAround();
 			}
-			else {
-				throw new NoAvailableResourcesException();
 			}
 		}	
+		else {
+			throw new NoAvailableResourcesException();
+		}
 	}
 	
 	

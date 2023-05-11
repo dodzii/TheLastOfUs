@@ -22,7 +22,7 @@ public class Medic extends Hero {
 	@Override
 	public void useSpecial() throws GameActionException {
 		if (this.getTarget() instanceof Hero && this.getTarget() != null
-				&& (this.checkEqual() || this.checkAdjacency(this.getTarget()))) {
+				&& (this.checkSameLocation() || this.checkAdjacency(this.getTarget()))) {
 			super.useSpecial();
 			this.heal();
 		} else {

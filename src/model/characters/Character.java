@@ -75,7 +75,6 @@ public abstract class Character {
 	}
 	
 	public void attack() throws InvalidTargetException, NotEnoughActionsException  {
-//		this.dealDamage(true);
 		Character tmp = this.getTarget();
 		if (tmp != null && this.checkAdjacency(tmp)) {
 			int damage =  this.getAttackDmg() ;
@@ -93,17 +92,15 @@ public abstract class Character {
 		
 	}
 	
-	public  boolean  checkEqual() {
+	public  boolean  checkSameLocation() {
 		return this.getLocation().x == this.getTarget().getLocation().x && this.getLocation().y == this.getTarget().getLocation().y;
-		//return this.getName().equals(target.getName()) && this.getLocation().equals(target.getLocation()) &&  this.getMaxHp()==target.getMaxHp() && this.getCurrentHp() == target.getCurrentHp();
 	}
 	
 	public void defend(Character c) throws InvalidTargetException, NotEnoughActionsException {
-//		this.dealDamage(false);
 		if (c != null && checkAdjacency(c)) {
 			int damage =  (this.getAttackDmg()/2);
 			c.setCurrentHp(c.getCurrentHp()- damage);
-			if(c.getCurrentHp()<=0) {
+			if(c.getCurrentHp()==0) {
 				c.onCharacterDeath();
 			}
 		
@@ -114,25 +111,6 @@ public abstract class Character {
 		
 	}
 	
-//	public void dealDamage(boolean attack) throws InvalidTargetException, NotEnoughActionsException {
-//		Character target = this.getTarget();
-//		if (target != null && checkAdjacency(target)) {
-//			int damage = (attack)? this.attackDmg :  (this.attackDmg/2);
-//			target.setCurrentHp(target.getCurrentHp()- damage);
-//			Character tmp=this.getTarget();
-//			if(attack) {
-//				target.setTarget(this);
-//				target.defend();
-//			}
-//			if(tmp.getCurrentHp()==0) {
-//				tmp.onCharacterDeath();
-//			}
-//		
-//		}
-//		else {
-//			throw new InvalidTargetException();
-//		}
-//	}
 
 	public void onCharacterDeath() {
 		Point p = this.getLocation();
