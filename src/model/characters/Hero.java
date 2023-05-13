@@ -87,15 +87,14 @@ public abstract class Hero extends Character {
 					int Damage = ((TrapCell) (Game.map[tmp.x][tmp.y])).getTrapDamage();
 					this.setCurrentHp(this.getCurrentHp() - Damage);
 					if (this.getCurrentHp() == 0) {
+						this.setActionsAvailable(this.getActionsAvailable()-1);
 						this.onCharacterDeath();
 						Game.map[tmp.x][tmp.y] = new CharacterCell(null);
-						this.setLocation(tmp);
-						this.assignVisibilityAround();
 					} else {
 						Game.map[tmp.x][tmp.y] = new CharacterCell(this);
 						((CharacterCell) Game.map[location.x][location.y]).setCharacter(null);
 						this.setLocation(tmp);
-						this.actionsAvailable--;
+						this.setActionsAvailable(this.getActionsAvailable()-1);
 						this.assignVisibilityAround();
 					}
 				} else if (Game.map[tmp.x][tmp.y] instanceof CollectibleCell) {
@@ -104,14 +103,14 @@ public abstract class Hero extends Character {
 					Game.map[tmp.x][tmp.y] = new CharacterCell(this);
 					((CharacterCell) Game.map[location.x][location.y]).setCharacter(null);
 					this.setLocation(tmp);
-					this.actionsAvailable--;
+					this.setActionsAvailable(this.getActionsAvailable()-1);
 					this.assignVisibilityAround();
 				} else if (Game.map[tmp.x][tmp.y] instanceof CharacterCell
 						&& ((CharacterCell) Game.map[tmp.x][tmp.y]).getCharacter() == null) {
 					Game.map[tmp.x][tmp.y] = new CharacterCell(this);
 					((CharacterCell) Game.map[location.x][location.y]).setCharacter(null);
 					this.setLocation(tmp);
-					this.actionsAvailable--;
+					this.setActionsAvailable(this.getActionsAvailable()-1);
 					this.assignVisibilityAround();
 				} else {
 					throw new MovementException();
@@ -166,12 +165,9 @@ public abstract class Hero extends Character {
 
 	public void useSpecial() throws GameActionException {
 		if (!this.supplyInventory.isEmpty()) {
-//			if (!(this.actionsAvailable == 0)) {
 				supplyInventory.get(0).use(this);
 				this.setSpecialAction(true);
-//			} else {
-//				throw new NotEnoughActionsException();
-//			}
+
 		} else {
 			throw new NoAvailableResourcesException();
 		}
