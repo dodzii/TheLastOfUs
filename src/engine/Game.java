@@ -105,10 +105,17 @@ public class Game {
 
 	public static void endTurn() throws InvalidTargetException, NotEnoughActionsException {
 		setAllInvisible();
-
-		for (Zombie z : zombies) {
+		
+		ArrayList<Zombie>zombiesTmp=new ArrayList<Zombie>();
+		for(int i=0;i<zombies.size();i++) {
+			zombiesTmp.add(zombies.get(i));
+		}
+		
+		for (Zombie z : zombiesTmp) {
 			z.attack();
 		}
+		
+
 
 		respawnZombie();
 		for (Zombie z : zombies) {
@@ -187,7 +194,7 @@ public class Game {
 	}
 	
 	public static void respawnZombie(Point locationDead) {
-		if (!isMapFull()) {
+		if (!isMapFull()&&isThereAnotherPlace(locationDead)) {
 			while (true) {
 				int x = (int) (Math.random() * 15);
 				int y = (int) (Math.random() * 15);
@@ -201,6 +208,12 @@ public class Game {
 				}
 			}
 		}
+		else {
+			Zombie z = new Zombie();
+			((CharacterCell) map[locationDead.x][locationDead.y]).setCharacter(z);
+			z.setLocation(new Point(locationDead.x, locationDead.y));
+			zombies.add(z);
+		}
 	}
 	public static boolean isMapFull() {
 		for(int i=0;i<15;i++) {
@@ -211,5 +224,17 @@ public class Game {
 			}
 		}
 		return true;
+	}
+	public static boolean isThereAnotherPlace(Point locationDead) {
+		for(int i=0;i<15;i++) {
+			for(int j=0;j<15;j++) {
+				if(i==locationDead.x&&j==locationDead.y)
+					continue;
+				if(map[i][j] instanceof CharacterCell && ((CharacterCell)map[i][j]).getCharacter()==null) {
+					return true;
+				}	
+			}
+		}
+		return false;
 	}
 }

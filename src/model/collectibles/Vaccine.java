@@ -36,7 +36,6 @@ public class Vaccine implements Collectible{
 				((CharacterCell)Game.map[location.x][location.y]).setCharacter(hero);
 				hero.setLocation(location);
 				Game.heroes.add(hero);
-				hero.assignVisibilityAround();
 			}
 			}
 		}	
