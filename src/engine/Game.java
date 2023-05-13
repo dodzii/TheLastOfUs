@@ -192,18 +192,26 @@ public class Game {
 	}
 	
 	public static void respawnZombie(Point locationDead) {
-		if (!isMapFull()&&isThereAnotherPlace(locationDead)) {
-			while (true) {
-				int x = (int) (Math.random() * 15);
-				int y = (int) (Math.random() * 15);
-				if (map[x][y] instanceof CharacterCell && ((CharacterCell) map[x][y]).getCharacter() == null
-						&& (x != locationDead.x && y != locationDead.y)) {
-					Zombie z = new Zombie();
-					((CharacterCell) map[x][y]).setCharacter(z);
-					z.setLocation(new Point(x, y));
-					zombies.add(z);
-					break;
+		if (!isMapFull()) {
+			if(isThereAnotherPlace(locationDead)) {
+				while (true) {
+					int x = (int) (Math.random() * 15);
+					int y = (int) (Math.random() * 15);
+					if (map[x][y] instanceof CharacterCell && ((CharacterCell) map[x][y]).getCharacter() == null
+							&& (x != locationDead.x && y != locationDead.y)) {
+						Zombie z = new Zombie();
+						((CharacterCell) map[x][y]).setCharacter(z);
+						z.setLocation(new Point(x, y));
+						zombies.add(z);
+						break;
+					}
 				}
+			}
+			else {
+				Zombie z = new Zombie();
+				((CharacterCell) map[locationDead.x][locationDead.y]).setCharacter(z);
+				z.setLocation(new Point(locationDead.x, locationDead.y));
+				zombies.add(z);
 			}
 		}
 	}

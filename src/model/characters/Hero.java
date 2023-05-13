@@ -81,6 +81,8 @@ public abstract class Hero extends Character {
 			case RIGHT:
 				tmp.y++;
 				break;
+			default:
+				throw new MovementException();
 			}
 			if ((tmp.x) <= 14 && (tmp.x) >= 0 && (tmp.y) >= 0 && (tmp.y <= 14)) {
 				if (Game.map[tmp.x][tmp.y] instanceof TrapCell) {
