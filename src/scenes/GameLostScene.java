@@ -1,6 +1,9 @@
 package scenes;
 
+import java.io.File;
+
 import engine.GUI;
+import engine.Game;
 import javafx.animation.FadeTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -9,13 +12,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 public class GameLostScene extends Scene {
-
+	public static MediaPlayer m;
 	public GameLostScene(Parent root) {
 		super(root,1920,1080);
+		Media song = new Media(new File("src/sounds/LostScene.mp3").toURI().toString());
+        m = new MediaPlayer(song);
+        m.setCycleCount(MediaPlayer.INDEFINITE);
+        m.play();
+        InstructionScene.m.stop();
 		VBox main = new VBox();
 		main.setStyle("-fx-background-image: url('images/GameLostScene.png'); "+"-fx-background-repeat: no-repeat;-fx-background-size: 100% 100%;-fx-border-style: none; -fx-focus-color: transparent;");
 		Button exit = new Button("Exit");
@@ -42,6 +52,9 @@ public class GameLostScene extends Scene {
 		this.setRoot(main);
 		GUI.window.setFullScreen(true);
 		exit.setOnAction(e -> {
+			Game.availableHeroes.clear();
+			Game.heroes.clear();
+			Game.zombies.clear();
 			FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.75), GUI.window.getScene().getRoot());
             fadeOut.setFromValue(1.0);
             fadeOut.setToValue(0.05);
@@ -57,6 +70,10 @@ public class GameLostScene extends Scene {
             fadeOut.play();
 			});
 		play.setOnAction(e -> {
+			m.stop();
+			Game.availableHeroes.clear();
+			Game.heroes.clear();
+			Game.zombies.clear();
 			FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.75), GUI.window.getScene().getRoot());
             fadeOut.setFromValue(1.0);
             fadeOut.setToValue(0.05);

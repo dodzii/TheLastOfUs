@@ -1,5 +1,7 @@
 package scenes;
 
+import java.io.File;
+
 import engine.GUI;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
@@ -15,11 +17,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+
 
 public class BaseScene extends Scene {
 
@@ -29,7 +34,11 @@ public class BaseScene extends Scene {
 		Label loadingLabel = new Label("AAA Studios Presents...");
         loadingLabel.setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 50; -fx-text-fill: White");
         loadingLabel.setAlignment(Pos.TOP_CENTER);
-        
+        String path = "src/sounds/BaseScene.wav";
+        Media song = new Media(new File("src/sounds/BaseScene.wav").toURI().toString());
+        MediaPlayer m = new MediaPlayer(song);
+        m.setCycleCount(1);
+        m.play();
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.seconds(0), 
                     new KeyValue(loadingLabel.translateXProperty(), 0),
@@ -69,7 +78,9 @@ public class BaseScene extends Scene {
         loadingBox.setAlignment(Pos.BOTTOM_CENTER);
         loadingBox.setSpacing(20);
         loadingBox.setTranslateY(400);
-	
+        
+       
+        
         // Create a stack pane to center the label
         VBox loadingPane = new VBox(loadingLabel,loadingBox);
         loadingPane.setAlignment(Pos.CENTER);
@@ -78,7 +89,7 @@ public class BaseScene extends Scene {
 			@Override
 			protected Void call() throws Exception {
 				for (int i = 0; i < 100; i++) {
-					Thread.sleep(30);
+					Thread.sleep(150);
 					final int progress = i + 1;
 					Platform.runLater(() -> progressBar
 							.setProgress(progress / 100.0));

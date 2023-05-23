@@ -1,5 +1,7 @@
 package scenes;
 
+import java.io.File;
+
 import engine.GUI;
 import engine.Game;
 import javafx.animation.FadeTransition;
@@ -16,11 +18,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 public class InstructionScene extends Scene {
-
+	public static MediaPlayer m;
 	public InstructionScene(Parent root) {
 		super(root,1920,1080);
 		BorderPane main = new BorderPane();
@@ -88,7 +92,12 @@ public class InstructionScene extends Scene {
         BorderPane.setAlignment(left, Pos.BOTTOM_LEFT);
         this.setRoot(main);
         this.setOnKeyPressed(e1 -> {
-        	if(e1.getCode() == KeyCode.SPACE){
+        	if(e1.getCode() == KeyCode.SPACE){        		
+        		Media song = new Media(new File("src/sounds/MapScene.mp3").toURI().toString());
+                m = new MediaPlayer(song);
+                m.setCycleCount(MediaPlayer.INDEFINITE);
+                m.play();
+                OpenScene.m.stop();
 				FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.75), GUI.window.getScene().getRoot());
 	            fadeOut.setFromValue(1.0);
 	            fadeOut.setToValue(0.05);

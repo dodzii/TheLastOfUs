@@ -1,5 +1,7 @@
 package scenes;
 
+import java.io.File;
+
 import engine.GUI;
 import engine.Game;
 import javafx.animation.FadeTransition;
@@ -10,11 +12,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 public class OpenScene extends Scene {
-
+	public static MediaPlayer m; 
 	public OpenScene(Parent root) {
 		super(root,1920,1080);
 		GUI.window.setFullScreen(true);
@@ -34,6 +38,10 @@ public class OpenScene extends Scene {
         scaleTransition.play();
         click.setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 30; -fx-text-fill: White");
         main.getChildren().add(click);
+        Media song = new Media(new File("src/sounds/OpenScene.mp3").toURI().toString());
+        m = new MediaPlayer(song);
+        m.setCycleCount(MediaPlayer.INDEFINITE);
+        m.play();
         this.setRoot(main);
 		this.setOnKeyPressed(e -> {
 			if(e.getCode()==KeyCode.SPACE){

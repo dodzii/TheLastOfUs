@@ -62,9 +62,6 @@ public class Game{
 
 	public static boolean checkGameOver() {
 		if (heroes.size() == 0){
-			availableHeroes.clear();
-			heroes.clear();
-			zombies.clear();
 			return true;
 		}
 		for (int i = 0; i < 15; i++) {
@@ -87,9 +84,6 @@ public class Game{
 				}
 			}
 		}
-		availableHeroes.clear();
-		heroes.clear();
-		zombies.clear();
 		return true;
 	}
 
