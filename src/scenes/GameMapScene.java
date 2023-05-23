@@ -118,6 +118,7 @@ public class GameMapScene extends Scene {
 										"Congrats  You  Won!!");
 								a.getChildren().get(1).setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 40; -fx-text-fill: White; -fx-font-weight: 900;");
 								a.getChildren().remove(0);
+								a.getChildren().remove(1);
 								leftUp.getChildren().clear();
 								leftUp.getChildren().add(a);
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
@@ -206,7 +207,7 @@ public class GameMapScene extends Scene {
 										"Cograts  You  Won!");
 								a.getChildren().get(1).setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 40; -fx-text-fill: White; -fx-font-weight: 900;");
 								a.getChildren().remove(0);
-								a.getChildren().remove(2);
+								a.getChildren().remove(1);
 								leftUp.getChildren().clear();
 								leftUp.getChildren().add(a);
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
@@ -296,7 +297,7 @@ public class GameMapScene extends Scene {
 										"Congrats  You  Won!");
 								a.getChildren().get(1).setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 40; -fx-text-fill: White; -fx-font-weight: 900;");
 								a.getChildren().remove(0);
-								a.getChildren().remove(2);
+								a.getChildren().remove(1);
 								leftUp.getChildren().clear();
 								leftUp.getChildren().add(a);
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
@@ -386,7 +387,7 @@ public class GameMapScene extends Scene {
 										"Congrats  You  Won!");
 								a.getChildren().get(1).setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 40; -fx-text-fill: White; -fx-font-weight: 900;");
 								a.getChildren().remove(0);
-								a.getChildren().remove(2);
+								a.getChildren().remove(1);
 								leftUp.getChildren().clear();
 								leftUp.getChildren().add(a);
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
@@ -413,7 +414,7 @@ public class GameMapScene extends Scene {
 								});
 							} else {
 								AlertBox a = new AlertBox(
-										"You Have Died Because Of A Trap Cell \n Unfortunately  You  Lost!! ");
+										"You Have Died Because Of A Trap Cell \n You Lost!! ");
 								a.getChildren().remove(2);
 								leftUp.getChildren().clear();
 								leftUp.getChildren().add(a);
@@ -470,7 +471,7 @@ public class GameMapScene extends Scene {
 										"Congrats  You  Won!");
 								a.getChildren().get(1).setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 40; -fx-text-fill: White; -fx-font-weight: 900;");
 								a.getChildren().remove(0);
-								a.getChildren().remove(2);
+								a.getChildren().remove(1);
 								leftUp.getChildren().clear();
 								leftUp.getChildren().add(a);
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
@@ -497,7 +498,7 @@ public class GameMapScene extends Scene {
 								});
 							} else {
 								AlertBox a = new AlertBox(
-										"Unfortnately  You  Lost!");	
+										"Unfortunately  You  Lost!");	
 								a.getChildren().get(1).setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 40; -fx-text-fill: White; -fx-font-weight: 900;");
 								a.getChildren().remove(2);
 								leftUp.getChildren().clear();
@@ -545,7 +546,7 @@ public class GameMapScene extends Scene {
 										"Congrats  You  Won!");
 								a.getChildren().get(1).setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 40; -fx-text-fill: White; -fx-font-weight: 900;");
 								a.getChildren().remove(0);
-								a.getChildren().remove(2);
+								a.getChildren().remove(1);
 								leftUp.getChildren().clear();
 								leftUp.getChildren().add(a);
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
@@ -619,7 +620,7 @@ public class GameMapScene extends Scene {
 										"Congrats!  You  Won!");
 								a.getChildren().get(1).setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 40; -fx-text-fill: White; -fx-font-weight: 900;");
 								a.getChildren().remove(0);
-								a.getChildren().remove(2);
+								a.getChildren().remove(1);
 								leftUp.getChildren().clear();
 								leftUp.getChildren().add(a);
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
@@ -696,7 +697,7 @@ public class GameMapScene extends Scene {
 										"Congrats!  You  Won!");
 								a.getChildren().get(1).setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 40; -fx-text-fill: White; -fx-font-weight: 900;");
 								a.getChildren().remove(0);
-								a.getChildren().remove(2);
+								a.getChildren().remove(1);
 								leftUp.getChildren().clear();
 								leftUp.getChildren().add(a);
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));

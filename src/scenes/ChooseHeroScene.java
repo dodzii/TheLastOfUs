@@ -182,7 +182,15 @@ public class ChooseHeroScene extends Scene {
 
 	public static Image getImage(Hero curr) {
 		Image image=null;
-		if(curr instanceof Fighter) image=new Image("images/ChooseFighter.png");
+		if(curr.getName().equals("Joel Miller")) image=new Image("images/Joel.png");
+		else if(curr.getName().equals("Ellie Williams")) image = new Image("images/Ellie.png");
+		else if(curr.getName().equals("Tess")) image = new Image("images/Tess.png");
+		else if(curr.getName().equals("Riley Abel")) image = new Image("images/Riley_Abel.png");
+		else if(curr.getName().equals("Tommy Miller")) image = new Image("images/Tommy_Seattle.png");
+		else if(curr.getName().equals("Bill")) image = new Image("images/bill.png");
+		else if(curr.getName().equals("David")) image = new Image("images/David.png");
+		else if(curr.getName().equals("Henry Burell")) image = new Image("images/henry.png");
+		else if(curr instanceof Fighter) image=new Image("images/ChooseFighter.png");
 		else if(curr instanceof Medic) image=new Image("images/ChooseMedic.png");
 		else if(curr instanceof Explorer) image=new Image("images/ChooseExplorer.png");
 		
