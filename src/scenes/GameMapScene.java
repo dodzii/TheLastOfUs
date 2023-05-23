@@ -144,7 +144,7 @@ public class GameMapScene extends Scene {
 								});
 							} else {
 								AlertBox a = new AlertBox(
-										"You Have Died Because Of A Trap Cell \n You Lost!! ");
+										"You Have Died Because Of A Trap Cell \n Unfortunately  You  Lost!! ");
 								leftUp.getChildren().clear();
 								leftUp.getChildren().add(a);
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
@@ -233,7 +233,7 @@ public class GameMapScene extends Scene {
 								});
 							} else {
 								AlertBox a = new AlertBox(
-										"You Have Died Because Of A Trap Cell \n You Lost!! ");
+										"You Have Died Because Of A Trap Cell \n Unfortunately  You  Lost!! ");
 								a.getChildren().remove(2);
 								leftUp.getChildren().clear();
 								leftUp.getChildren().add(a);
@@ -323,7 +323,7 @@ public class GameMapScene extends Scene {
 								});
 							} else {
 								AlertBox a = new AlertBox(
-										"You Have Died Because Of A Trap Cell \n You Lost!! ");
+										"You Have Died Because Of A Trap Cell \n Unfortunately  You  Lost!! ");
 								a.getChildren().remove(2);
 								leftUp.getChildren().clear();
 								leftUp.getChildren().add(a);
@@ -413,7 +413,7 @@ public class GameMapScene extends Scene {
 								});
 							} else {
 								AlertBox a = new AlertBox(
-										"You Have Died Because Of A Trap Cell \n You Lost!! ");
+										"You Have Died Because Of A Trap Cell \n Unfortunately  You  Lost!! ");
 								a.getChildren().remove(2);
 								leftUp.getChildren().clear();
 								leftUp.getChildren().add(a);
