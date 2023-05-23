@@ -194,7 +194,14 @@ public abstract class Hero extends Character {
 	}
 
 	public void attack() throws InvalidTargetException, NotEnoughActionsException {
-		if (actionsAvailable > 0) {
+		if(this instanceof Fighter && this.isSpecialAction()==true){
+			if (this.getTarget() instanceof Zombie  && this.checkAdjacency(this.getTarget())) {
+				super.attack();
+			} else {
+				throw new InvalidTargetException();
+			}
+		}
+		else if (actionsAvailable > 0) {
 			if (this.getTarget() instanceof Zombie  && this.checkAdjacency(this.getTarget())) {
 				super.attack();
 				actionsAvailable--;

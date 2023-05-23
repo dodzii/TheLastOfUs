@@ -38,7 +38,8 @@ public class ExplorerButton extends HeroButton{
 		
 		this.setOnMouseClicked(e -> {
 			
-			if(e.getClickCount() == 2){	
+			if(e.getClickCount() == 2){
+				GameMapScene.alert=false;
 				scaleTransition.stop();
 	        	GameMapScene.curr = h;
 	        	GameMapScene.updateLeftUp();

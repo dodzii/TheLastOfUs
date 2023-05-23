@@ -386,11 +386,43 @@ public class GameMapScene extends Scene {
 						updateLeftDown();
 						if (Game.checkGameOver()) {
 							if (Game.checkWin()) {
-								GUI.window
-										.setScene(new GameWonScene(new VBox()));
+								FadeTransition fadeOut = new FadeTransition(
+										Duration.seconds(0.75), GUI.window
+												.getScene().getRoot());
+								fadeOut.setFromValue(1.0);
+								fadeOut.setToValue(0.05);
+								GameWonScene o = new GameWonScene(
+										new StackPane());
+								o.setFill(Color.BLACK);
+								FadeTransition fadeIn = new FadeTransition(
+										Duration.seconds(0.75), o.getRoot());
+								fadeIn.setFromValue(0.0);
+								fadeIn.setToValue(1.0);
+								fadeOut.setOnFinished(e3 -> {
+									GUI.window.setScene(o);
+									fadeIn.play();
+									GUI.window.setFullScreen(true);
+								});
+								fadeOut.play();
 							} else {
-								GUI.window.setScene(new GameLostScene(
-										new VBox()));
+								FadeTransition fadeOut = new FadeTransition(
+										Duration.seconds(0.75), GUI.window
+												.getScene().getRoot());
+								fadeOut.setFromValue(1.0);
+								fadeOut.setToValue(0.05);
+								GameLostScene o = new GameLostScene(
+										new StackPane());
+								o.setFill(Color.BLACK);
+								FadeTransition fadeIn = new FadeTransition(
+										Duration.seconds(0.75), o.getRoot());
+								fadeIn.setFromValue(0.0);
+								fadeIn.setToValue(1.0);
+								fadeOut.setOnFinished(e3 -> {
+									GUI.window.setScene(o);
+									fadeIn.play();
+									GUI.window.setFullScreen(true);
+								});
+								fadeOut.play();
 							}
 						}
 					} catch (GameActionException e1) {

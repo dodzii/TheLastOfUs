@@ -27,19 +27,38 @@ public class BaseScene extends Scene {
 		super(root,1920,1080);
 		GUI.window.setFullScreen(true);
 		Label loadingLabel = new Label("AAA Studios Presents...");
-        loadingLabel.setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 30; -fx-text-fill: White");
+        loadingLabel.setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 50; -fx-text-fill: White");
         loadingLabel.setAlignment(Pos.TOP_CENTER);
         
-        TranslateTransition tt = new TranslateTransition(Duration.millis(600), loadingLabel);
-        tt.setAutoReverse(true);
-        tt.setCycleCount(9);
-        tt.setFromX(0);
-        tt.setToX(5);
-        tt.play();
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(600), new KeyValue(loadingLabel.opacityProperty(), 0)));
-        timeline.setAutoReverse(true);
-        timeline.setCycleCount(9);
-        timeline.play();
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(0), 
+                    new KeyValue(loadingLabel.translateXProperty(), 0),
+                    new KeyValue(loadingLabel.opacityProperty(), 1)
+                ),
+                new KeyFrame(Duration.seconds(0.1),
+                    new KeyValue(loadingLabel.translateXProperty(), 2),
+                    new KeyValue(loadingLabel.opacityProperty(), 0.8)
+                ),
+                new KeyFrame(Duration.seconds(0.25),
+                    new KeyValue(loadingLabel.translateXProperty(), -2),
+                    new KeyValue(loadingLabel.opacityProperty(), 0.6)
+                ),
+                new KeyFrame(Duration.seconds(0.35),
+                    new KeyValue(loadingLabel.translateXProperty(), 4),
+                    new KeyValue(loadingLabel.opacityProperty(), 0.4)
+                ),
+                new KeyFrame(Duration.seconds(0.45),
+                    new KeyValue(loadingLabel.translateXProperty(), -4),
+                    new KeyValue(loadingLabel.opacityProperty(), 0.2)
+                ),
+                new KeyFrame(Duration.seconds(0.55),
+                    new KeyValue(loadingLabel.translateXProperty(), 0),
+                    new KeyValue(loadingLabel.opacityProperty(), 1)
+                )
+            );
+
+            timeline.setCycleCount(Timeline.INDEFINITE);
+            timeline.play();
         loadingLabel.setTranslateY(-400);
         // Create a progress bar to display the loading progress
         ProgressBar progressBar = new ProgressBar();
@@ -54,7 +73,7 @@ public class BaseScene extends Scene {
         // Create a stack pane to center the label
         VBox loadingPane = new VBox(loadingLabel,loadingBox);
         loadingPane.setAlignment(Pos.CENTER);
-        loadingPane.setStyle("-fx-background-image: url('images/Studio.png'); "+"-fx-background-repeat: no-repeat; -fx-background-size: 100% 100%;");
+        loadingPane.setStyle("-fx-background-image: url('images/OpenScene.jpg'); "+"-fx-background-repeat: no-repeat; -fx-background-size: 100% 100%;");
 		Task<Void> loadingTask = new Task<Void>() {
 			@Override
 			protected Void call() throws Exception {
