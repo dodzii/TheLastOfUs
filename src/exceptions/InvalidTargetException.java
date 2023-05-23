@@ -3,7 +3,7 @@ package exceptions;
 public class InvalidTargetException extends GameActionException {
 	
 	public InvalidTargetException() {
-		super();
+		super("INVALID  TARGET!!");
 	}
 	
 	public InvalidTargetException(String s) {

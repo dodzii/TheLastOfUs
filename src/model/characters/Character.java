@@ -83,6 +83,7 @@ public abstract class Character {
 			
 			if(tmp.getCurrentHp()<=0) {
 				tmp.onCharacterDeath();
+				this.setTarget(null);
 			}
 		
 		}
@@ -102,6 +103,7 @@ public abstract class Character {
 			c.setCurrentHp(c.getCurrentHp()- damage);
 			if(c.getCurrentHp()==0) {
 				c.onCharacterDeath();
+				this.setTarget(null);
 			}
 		
 		}
@@ -114,7 +116,7 @@ public abstract class Character {
 
 	public void onCharacterDeath() {
 		Point p = this.getLocation();
-		Game.map[p.x][p.y] = new CharacterCell(null);
+		((CharacterCell)Game.map[p.x][p.y]).setCharacter(null);
 		
 	}
 	

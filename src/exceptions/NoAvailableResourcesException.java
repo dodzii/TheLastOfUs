@@ -4,7 +4,7 @@ public class NoAvailableResourcesException extends GameActionException{
 	
 	//Constructors
 	public NoAvailableResourcesException() {
-		super();
+		super("YOU  DON'T  HAVE  ENOUGH  RESOURCES");
 	}
 	
 	public NoAvailableResourcesException(String s){

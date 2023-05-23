@@ -7,11 +7,23 @@ import exceptions.NotEnoughActionsException;
 
 import java.awt.Point;
 import java.io.*;
+
+import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import model.characters.*;
 import model.collectibles.*;
 import model.world.*;
 
-public class Game {
+public class Game extends Application{
 
 	public static ArrayList<Hero> availableHeroes = new ArrayList<Hero>();
 	public static ArrayList<Hero> heroes = new ArrayList<Hero>();
@@ -236,5 +248,58 @@ public class Game {
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		loadHeroes("test_heros.csv");
+		startGame(availableHeroes.get(0));
+		Region root = createGridMap();
+        Scene scene = new Scene(root, Color.WHITE);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Grid Map");
+        primaryStage.show();
+	}
+	public Region createGridMap() {
+        GridPane gridPane = new GridPane();
+        for (int row = 0; row < 15; row++) {
+            for (int col = 0; col < 15; col++) {
+            	if(map[row][col] instanceof CharacterCell && ((CharacterCell)map[row][col]).getCharacter() instanceof Zombie){
+                Rectangle cell = new Rectangle(65, 65, Color.GREEN);
+                cell.setStroke(Color.BLACK);
+                gridPane.add(cell, col, row);
+            	}
+            	else if(map[row][col] instanceof CharacterCell && ((CharacterCell)map[row][col]).getCharacter() instanceof Hero){
+                    Rectangle cell = new Rectangle(65, 65, Color.CORNFLOWERBLUE);
+                    cell.setStroke(Color.BLACK);
+                    gridPane.add(cell, col, row);
+                	}
+            	else if(map[row][col] instanceof CollectibleCell && ((CollectibleCell)map[row][col]).getCollectible() instanceof Vaccine){
+                    Rectangle cell = new Rectangle(65, 65, Color.AQUAMARINE);
+                    cell.setStroke(Color.BLACK);
+                    gridPane.add(cell, col, row);
+                	}
+            	else if(map[row][col] instanceof CollectibleCell && ((CollectibleCell)map[row][col]).getCollectible() instanceof Supply){
+                    Rectangle cell = new Rectangle(65, 65, Color.DARKORCHID);
+                    cell.setStroke(Color.BLACK);
+                    gridPane.add(cell, col, row);
+                	}
+            	else{            		
+                        Rectangle cell = new Rectangle(65, 65, Color.WHITE);
+                        cell.setStroke(Color.BLACK);
+                        gridPane.add(cell, col, row);              
+            	}
+            }
+        }
+        // Set the GridPane to fill the available space
+        gridPane.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        // Use a VBox to center the GridPane within the Region
+        VBox vbox = new VBox(gridPane);
+        vbox.setFillWidth(true);
+        vbox.setAlignment(Pos.CENTER);
+        return vbox;
+    }
+	public static void main(String[] args) {
+		launch(args);
 	}
 }

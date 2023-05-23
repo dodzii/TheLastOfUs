@@ -3,7 +3,7 @@ package exceptions;
 public class MovementException extends GameActionException{
 	
 	public MovementException(){
-		super();
+		super("INVALID  MOVEMENT!!");
 	}
 	
 	public MovementException(String s) {
