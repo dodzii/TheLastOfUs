@@ -20,11 +20,13 @@ public class AlertBox extends VBox{
 		this.setAlignment(Pos.CENTER);
 		close.setOnMouseEntered(e ->{
 			close.setStyle("-fx-border-radius: 100px;-fx-background-radius: 100px;-fx-border:3px;-fx-border-color: ghostwhite;-fx-background-color:ghostwhite;-fx-font-family: Papyrus, fantasy ; -fx-font-size: 30; -fx-text-fill: Black; -fx-font-weight: 900;");
+			
 		});
 		close.setOnMouseExited(e ->{
 			close.setStyle("-fx-border-radius: 50px;-fx-background-color: transparent;-fx-border:2px;-fx-border-color: gray;-fx-font-family: Papyrus, fantasy ; -fx-font-size: 30; -fx-text-fill: White; -fx-font-weight: 900;");
 		});
 		close.setOnAction(e ->{
+			GameMapScene.alert = false;
 			GameMapScene.updateLeftUp();
 		});
 	}
