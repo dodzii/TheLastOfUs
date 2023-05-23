@@ -17,6 +17,8 @@ import model.world.*;
 import engine.*;
 import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
+import javafx.animation.SequentialTransition;
+import javafx.animation.PauseTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -112,6 +114,15 @@ public class GameMapScene extends Scene {
 						}
 						if (Game.checkGameOver()) {
 							if (Game.checkWin()) {
+								AlertBox a = new AlertBox(
+										"Congrats  You  Won!!");
+								a.getChildren().get(1).setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 40; -fx-text-fill: White; -fx-font-weight: 900;");
+								a.getChildren().remove(0);
+								leftUp.getChildren().clear();
+								leftUp.getChildren().add(a);
+								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+								pause.play();
+								pause.setOnFinished(e4-> {
 								FadeTransition fadeOut = new FadeTransition(
 										Duration.seconds(0.75), GUI.window
 												.getScene().getRoot());
@@ -130,7 +141,15 @@ public class GameMapScene extends Scene {
 									GUI.window.setFullScreen(true);
 								});
 								fadeOut.play();
+								});
 							} else {
+								AlertBox a = new AlertBox(
+										"You Have Died Because Of A Trap Cell \n You Lost!! ");
+								leftUp.getChildren().clear();
+								leftUp.getChildren().add(a);
+								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+								pause.play();
+								pause.setOnFinished(e4->{
 								FadeTransition fadeOut = new FadeTransition(
 										Duration.seconds(0.75), GUI.window
 												.getScene().getRoot());
@@ -149,6 +168,7 @@ public class GameMapScene extends Scene {
 									GUI.window.setFullScreen(true);
 								});
 								fadeOut.play();
+								});
 							}
 						}
 					} catch (MovementException e1) {
@@ -182,6 +202,16 @@ public class GameMapScene extends Scene {
 						}
 						if (Game.checkGameOver()) {
 							if (Game.checkWin()) {
+								AlertBox a = new AlertBox(
+										"Cograts  You  Won!");
+								a.getChildren().get(1).setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 40; -fx-text-fill: White; -fx-font-weight: 900;");
+								a.getChildren().remove(0);
+								a.getChildren().remove(2);
+								leftUp.getChildren().clear();
+								leftUp.getChildren().add(a);
+								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+								pause.play();
+								pause.setOnFinished(e4-> {
 								FadeTransition fadeOut = new FadeTransition(
 										Duration.seconds(0.75), GUI.window
 												.getScene().getRoot());
@@ -200,7 +230,16 @@ public class GameMapScene extends Scene {
 									GUI.window.setFullScreen(true);
 								});
 								fadeOut.play();
+								});
 							} else {
+								AlertBox a = new AlertBox(
+										"You Have Died Because Of A Trap Cell \n You Lost!! ");
+								a.getChildren().remove(2);
+								leftUp.getChildren().clear();
+								leftUp.getChildren().add(a);
+								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+								pause.play();
+								pause.setOnFinished(e4->{
 								FadeTransition fadeOut = new FadeTransition(
 										Duration.seconds(0.75), GUI.window
 												.getScene().getRoot());
@@ -219,6 +258,7 @@ public class GameMapScene extends Scene {
 									GUI.window.setFullScreen(true);
 								});
 								fadeOut.play();
+								});
 							}
 						}
 					} catch (MovementException e1) {
@@ -252,6 +292,16 @@ public class GameMapScene extends Scene {
 						}
 						if (Game.checkGameOver()) {
 							if (Game.checkWin()) {
+								AlertBox a = new AlertBox(
+										"Congrats  You  Won!");
+								a.getChildren().get(1).setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 40; -fx-text-fill: White; -fx-font-weight: 900;");
+								a.getChildren().remove(0);
+								a.getChildren().remove(2);
+								leftUp.getChildren().clear();
+								leftUp.getChildren().add(a);
+								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+								pause.play();
+								pause.setOnFinished(e4-> {
 								FadeTransition fadeOut = new FadeTransition(
 										Duration.seconds(0.75), GUI.window
 												.getScene().getRoot());
@@ -270,7 +320,16 @@ public class GameMapScene extends Scene {
 									GUI.window.setFullScreen(true);
 								});
 								fadeOut.play();
+								});
 							} else {
+								AlertBox a = new AlertBox(
+										"You Have Died Because Of A Trap Cell \n You Lost!! ");
+								a.getChildren().remove(2);
+								leftUp.getChildren().clear();
+								leftUp.getChildren().add(a);
+								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+								pause.play();
+								pause.setOnFinished(e4->{
 								FadeTransition fadeOut = new FadeTransition(
 										Duration.seconds(0.75), GUI.window
 												.getScene().getRoot());
@@ -289,6 +348,7 @@ public class GameMapScene extends Scene {
 									GUI.window.setFullScreen(true);
 								});
 								fadeOut.play();
+								});
 							}
 						}
 					} catch (MovementException e1) {
@@ -322,6 +382,16 @@ public class GameMapScene extends Scene {
 						}
 						if (Game.checkGameOver()) {
 							if (Game.checkWin()) {
+								AlertBox a = new AlertBox(
+										"Congrats  You  Won!");
+								a.getChildren().get(1).setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 40; -fx-text-fill: White; -fx-font-weight: 900;");
+								a.getChildren().remove(0);
+								a.getChildren().remove(2);
+								leftUp.getChildren().clear();
+								leftUp.getChildren().add(a);
+								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+								pause.play();
+								pause.setOnFinished(e4-> {
 								FadeTransition fadeOut = new FadeTransition(
 										Duration.seconds(0.75), GUI.window
 												.getScene().getRoot());
@@ -340,7 +410,16 @@ public class GameMapScene extends Scene {
 									GUI.window.setFullScreen(true);
 								});
 								fadeOut.play();
+								});
 							} else {
+								AlertBox a = new AlertBox(
+										"You Have Died Because Of A Trap Cell \n You Lost!! ");
+								a.getChildren().remove(2);
+								leftUp.getChildren().clear();
+								leftUp.getChildren().add(a);
+								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+								pause.play();
+								pause.setOnFinished(e4->{
 								FadeTransition fadeOut = new FadeTransition(
 										Duration.seconds(0.75), GUI.window
 												.getScene().getRoot());
@@ -359,6 +438,7 @@ public class GameMapScene extends Scene {
 									GUI.window.setFullScreen(true);
 								});
 								fadeOut.play();
+								});
 							}
 						}
 					} catch (MovementException e1) {
@@ -386,6 +466,16 @@ public class GameMapScene extends Scene {
 						updateLeftDown();
 						if (Game.checkGameOver()) {
 							if (Game.checkWin()) {
+								AlertBox a = new AlertBox(
+										"Congrats  You  Won!");
+								a.getChildren().get(1).setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 40; -fx-text-fill: White; -fx-font-weight: 900;");
+								a.getChildren().remove(0);
+								a.getChildren().remove(2);
+								leftUp.getChildren().clear();
+								leftUp.getChildren().add(a);
+								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+								pause.play();
+								pause.setOnFinished(e4-> {
 								FadeTransition fadeOut = new FadeTransition(
 										Duration.seconds(0.75), GUI.window
 												.getScene().getRoot());
@@ -404,7 +494,17 @@ public class GameMapScene extends Scene {
 									GUI.window.setFullScreen(true);
 								});
 								fadeOut.play();
+								});
 							} else {
+								AlertBox a = new AlertBox(
+										"Unfortnately  You  Lost!");	
+								a.getChildren().get(1).setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 40; -fx-text-fill: White; -fx-font-weight: 900;");
+								a.getChildren().remove(2);
+								leftUp.getChildren().clear();
+								leftUp.getChildren().add(a);
+								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+								pause.play();
+								pause.setOnFinished(e4->{
 								FadeTransition fadeOut = new FadeTransition(
 										Duration.seconds(0.75), GUI.window
 												.getScene().getRoot());
@@ -423,6 +523,7 @@ public class GameMapScene extends Scene {
 									GUI.window.setFullScreen(true);
 								});
 								fadeOut.play();
+								});
 							}
 						}
 					} catch (GameActionException e1) {
@@ -440,6 +541,16 @@ public class GameMapScene extends Scene {
 						updateLeftDown();
 						if (Game.checkGameOver()) {
 							if (Game.checkWin()) {
+								AlertBox a = new AlertBox(
+										"Congrats  You  Won!");
+								a.getChildren().get(1).setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 40; -fx-text-fill: White; -fx-font-weight: 900;");
+								a.getChildren().remove(0);
+								a.getChildren().remove(2);
+								leftUp.getChildren().clear();
+								leftUp.getChildren().add(a);
+								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+								pause.play();
+								pause.setOnFinished(e4-> {
 								FadeTransition fadeOut = new FadeTransition(
 										Duration.seconds(0.75), GUI.window
 												.getScene().getRoot());
@@ -458,7 +569,17 @@ public class GameMapScene extends Scene {
 									GUI.window.setFullScreen(true);
 								});
 								fadeOut.play();
+								});
 							} else {
+								AlertBox a = new AlertBox(
+										"Unfortunately  You  Lost!");
+								a.getChildren().get(1).setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 40; -fx-text-fill: White; -fx-font-weight: 900;");
+								a.getChildren().remove(2);
+								leftUp.getChildren().clear();
+								leftUp.getChildren().add(a);
+								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+								pause.play();
+								pause.setOnFinished(e4->{
 								FadeTransition fadeOut = new FadeTransition(
 										Duration.seconds(0.75), GUI.window
 												.getScene().getRoot());
@@ -477,6 +598,7 @@ public class GameMapScene extends Scene {
 									GUI.window.setFullScreen(true);
 								});
 								fadeOut.play();
+								});
 							}
 						}
 					} catch (GameActionException e1) {
@@ -493,6 +615,16 @@ public class GameMapScene extends Scene {
 						updateLeftDown();
 						if (Game.checkGameOver()) {
 							if (Game.checkWin()) {
+								AlertBox a = new AlertBox(
+										"Congrats!  You  Won!");
+								a.getChildren().get(1).setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 40; -fx-text-fill: White; -fx-font-weight: 900;");
+								a.getChildren().remove(0);
+								a.getChildren().remove(2);
+								leftUp.getChildren().clear();
+								leftUp.getChildren().add(a);
+								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+								pause.play();
+								pause.setOnFinished(e4-> {
 								FadeTransition fadeOut = new FadeTransition(
 										Duration.seconds(0.75), GUI.window
 												.getScene().getRoot());
@@ -511,7 +643,17 @@ public class GameMapScene extends Scene {
 									GUI.window.setFullScreen(true);
 								});
 								fadeOut.play();
+								});
 							} else {
+								AlertBox a = new AlertBox(
+										"Unfortunately  You  Lost!");
+								a.getChildren().get(1).setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 40; -fx-text-fill: White; -fx-font-weight: 900;");
+								a.getChildren().remove(2);
+								leftUp.getChildren().clear();
+								leftUp.getChildren().add(a);
+								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+								pause.play();
+								pause.setOnFinished(e4->{
 								FadeTransition fadeOut = new FadeTransition(
 										Duration.seconds(0.75), GUI.window
 												.getScene().getRoot());
@@ -530,6 +672,7 @@ public class GameMapScene extends Scene {
 									GUI.window.setFullScreen(true);
 								});
 								fadeOut.play();
+								});
 							}
 						}
 					} catch (GameActionException e1) {
@@ -549,6 +692,16 @@ public class GameMapScene extends Scene {
 						updateLeftDown();
 						if (Game.checkGameOver()) {
 							if (Game.checkWin()) {
+								AlertBox a = new AlertBox(
+										"Congrats!  You  Won!");
+								a.getChildren().get(1).setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 40; -fx-text-fill: White; -fx-font-weight: 900;");
+								a.getChildren().remove(0);
+								a.getChildren().remove(2);
+								leftUp.getChildren().clear();
+								leftUp.getChildren().add(a);
+								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+								pause.play();
+								pause.setOnFinished(e4-> {
 								FadeTransition fadeOut = new FadeTransition(
 										Duration.seconds(0.75), GUI.window
 												.getScene().getRoot());
@@ -567,7 +720,17 @@ public class GameMapScene extends Scene {
 									GUI.window.setFullScreen(true);
 								});
 								fadeOut.play();
+								});
 							} else {
+								AlertBox a = new AlertBox(
+										"Unfortunately  You  Lost!");
+								a.getChildren().get(1).setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 50; -fx-text-fill: White; -fx-font-weight: 900;");
+								a.getChildren().remove(2);
+								leftUp.getChildren().clear();
+								leftUp.getChildren().add(a);
+								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+								pause.play();
+								pause.setOnFinished(e4->{
 								FadeTransition fadeOut = new FadeTransition(
 										Duration.seconds(0.75), GUI.window
 												.getScene().getRoot());
@@ -586,6 +749,7 @@ public class GameMapScene extends Scene {
 									GUI.window.setFullScreen(true);
 								});
 								fadeOut.play();
+								});
 							}
 						}
 					} catch (Exception e1) {

@@ -38,7 +38,7 @@ public class ChooseHeroScene extends Scene {
 	public ChooseHeroScene(Parent root) {
 		super(root,1920,1080);
 		
-		
+		herosTmp.clear();
 		for(int j=0;j<Game.availableHeroes.size();j++) {
 			herosTmp.add(Game.availableHeroes.get(j));
 		}
