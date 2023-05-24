@@ -56,39 +56,39 @@ public class GameWonScene extends Scene {
 			Game.availableHeroes.clear();
 			Game.heroes.clear();
 			Game.zombies.clear();
-			FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.75), GUI.window.getScene().getRoot());
-            fadeOut.setFromValue(1.0);
-            fadeOut.setToValue(0.05);
+//			FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.75), GUI.window.getScene().getRoot());
+//            fadeOut.setFromValue(1.0);
+//            fadeOut.setToValue(0.05);
             CreditsScene o = new CreditsScene(new StackPane());o.setFill(Color.BLACK);
             FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.75), o.getRoot());
             fadeIn.setFromValue(0.0);
             fadeIn.setToValue(1.0);
-            fadeOut.setOnFinished(e3 -> {	            	
+//            fadeOut.setOnFinished(e3 -> {	            	
             	GUI.window.setScene(o);
             	fadeIn.play();
             	GUI.window.setFullScreen(true);	    			
             });
-            fadeOut.play();
-			});
+//            fadeOut.play();
+//			});
 		play.setOnAction(e -> {
 			m.stop();
 			Game.availableHeroes.clear();
 			Game.heroes.clear();
 			Game.zombies.clear();
-			FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.75), GUI.window.getScene().getRoot());
-            fadeOut.setFromValue(1.0);
-            fadeOut.setToValue(0.05);
+//			FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.75), GUI.window.getScene().getRoot());
+//            fadeOut.setFromValue(1.0);
+//            fadeOut.setToValue(0.05);
             OpenScene o = new OpenScene(new StackPane());o.setFill(Color.BLACK);
             FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.75), o.getRoot());
             fadeIn.setFromValue(0.0);
             fadeIn.setToValue(1.0);
-            fadeOut.setOnFinished(e3 -> {	            	
+//            fadeOut.setOnFinished(e3 -> {	            	
             	GUI.window.setScene(o);
             	fadeIn.play();
             	GUI.window.setFullScreen(true);	    			
             });
-            fadeOut.play();
-		});
+//            fadeOut.play();
+//		});
 		
 		GUI.window.setFullScreen(true);
 	}

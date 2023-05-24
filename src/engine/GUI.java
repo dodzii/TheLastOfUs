@@ -13,12 +13,14 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class GUI extends Application {
 	public static Stage window;
 	public void start(Stage primaryStage) {
 		window=primaryStage;
 		window.setTitle("The Last Of Us: AAA Legacy");
+		window.initStyle(StageStyle.UNDECORATED);
 		window.setFullScreen(true);
 		window.setScene(new BaseScene(new StackPane()));
 		window.setFullScreenExitHint("");

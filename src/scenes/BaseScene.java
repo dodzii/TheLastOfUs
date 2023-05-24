@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
@@ -34,11 +35,13 @@ public class BaseScene extends Scene {
 		Label loadingLabel = new Label("AAA Studios Presents...");
         loadingLabel.setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 50; -fx-text-fill: White");
         loadingLabel.setAlignment(Pos.TOP_CENTER);
-        String path = "src/sounds/BaseScene.wav";
-        Media song = new Media(new File("src/sounds/BaseScene.wav").toURI().toString());
-        MediaPlayer m = new MediaPlayer(song);
-        m.setCycleCount(1);
-        m.play();
+        AudioClip au = new AudioClip(new File("src/sounds/BaseScene.mp3").toURI().toString());
+        au.setCycleCount(1);
+        au.play();
+//        Media song = new Media(new File("src/sounds/BaseScene.mp3").toURI().toString());
+//        MediaPlayer m = new MediaPlayer(song);
+//        m.setCycleCount(1);
+//        m.play();
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.seconds(0), 
                     new KeyValue(loadingLabel.translateXProperty(), 0),
@@ -102,21 +105,21 @@ public class BaseScene extends Scene {
 		
 		loadingTask.setOnSucceeded(event -> {
 			this.setFill(Color.BLACK);
-			FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.75), GUI.window.getScene().getRoot());
-            fadeOut.setFromValue(1.0);
-            fadeOut.setToValue(0.05);
+//			FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.75), GUI.window.getScene().getRoot());
+//            fadeOut.setFromValue(1.0);
+//            fadeOut.setToValue(0.05);
             OpenScene o = new OpenScene(new StackPane());o.setFill(Color.BLACK);
             FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.75), o.getRoot());
             fadeIn.setFromValue(0.0);
             fadeIn.setToValue(1.0);
-            fadeOut.setOnFinished(e3 -> {
+//            fadeOut.setOnFinished(e3 -> {
             	GUI.window.setScene(o);
             	fadeIn.play();
     			GUI.window.setFullScreen(true);
-            });
+//            });
             
             
-            fadeOut.play();
+//            fadeOut.play();
             
 			});
 	}

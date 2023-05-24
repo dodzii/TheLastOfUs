@@ -98,19 +98,19 @@ public class InstructionScene extends Scene {
                 m.setCycleCount(MediaPlayer.INDEFINITE);
                 m.play();
                 OpenScene.m.stop();
-				FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.75), GUI.window.getScene().getRoot());
-	            fadeOut.setFromValue(1.0);
-	            fadeOut.setToValue(0.05);
+//				FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.75), GUI.window.getScene().getRoot());
+//	            fadeOut.setFromValue(1.0);
+//	            fadeOut.setToValue(0.05);
 	            GameMapScene o = new GameMapScene(new StackPane());o.setFill(Color.BLACK);
 	            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.75), o.getRoot());
 	            fadeIn.setFromValue(0.0);
 	            fadeIn.setToValue(1.0);
-	            fadeOut.setOnFinished(e3 -> {	            	
+//	            fadeOut.setOnFinished(e3 -> {	            	
 	            	GUI.window.setScene(o);
 	            	fadeIn.play();
 	            	GUI.window.setFullScreen(true);	    			
-	            });
-	            fadeOut.play();
+//	            });
+//	            fadeOut.play();
         	}
 		});
 	}

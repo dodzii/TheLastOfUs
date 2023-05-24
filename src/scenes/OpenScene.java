@@ -50,21 +50,21 @@ public class OpenScene extends Scene {
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
-				FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.75), GUI.window.getScene().getRoot());
-	            fadeOut.setFromValue(1.0);
-	            fadeOut.setToValue(0.05);
+//				FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.75), GUI.window.getScene().getRoot());
+//	            fadeOut.setFromValue(1.0);
+//	            fadeOut.setToValue(0.05);
 	            ChooseHeroScene o = new ChooseHeroScene(new StackPane());o.setFill(Color.BLACK);
 	            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.75), o.getRoot());
 	            fadeIn.setFromValue(0.0);
 	            fadeIn.setToValue(1.0);
-	            fadeOut.setOnFinished(e3 -> {
+//	            fadeOut.setOnFinished(e3 -> {
 	            	GUI.window.setScene(o);
 	            	fadeIn.play();
 	    			GUI.window.setFullScreen(true);
-	            });
+//	            });
 	            
 	            
-	            fadeOut.play();
+//	            fadeOut.play();
 			
 			
 			

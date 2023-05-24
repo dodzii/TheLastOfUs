@@ -124,19 +124,19 @@ public class ChooseHeroScene extends Scene {
 			}
 			else if(e.getCode()==KeyCode.ENTER){
 				Game.startGame(curr);
-				FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.75), GUI.window.getScene().getRoot());
-	            fadeOut.setFromValue(1.0);
-	            fadeOut.setToValue(0.05);
+//				FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.75), GUI.window.getScene().getRoot());
+//	            fadeOut.setFromValue(1.0);
+//	            fadeOut.setToValue(0.05);
 	            InstructionScene o = new InstructionScene(new StackPane());o.setFill(Color.BLACK);
 	            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.75), o.getRoot());
 	            fadeIn.setFromValue(0.0);
 	            fadeIn.setToValue(1.0);
-	            fadeOut.setOnFinished(e3 -> {	            	
+//	            fadeOut.setOnFinished(e3 -> {	            	
 	            	GUI.window.setScene(o);
 	            	fadeIn.play();
 	            	GUI.window.setFullScreen(true);	    			
-	            });
-	            fadeOut.play();
+//	            });
+//	            fadeOut.play();
 			}
 		});
 		HBox south = new HBox();
@@ -154,19 +154,19 @@ public class ChooseHeroScene extends Scene {
 		});
 		transfer.setOnAction(e -> {
 			Game.startGame(curr);
-			FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.75), GUI.window.getScene().getRoot());
-            fadeOut.setFromValue(1.0);
-            fadeOut.setToValue(0.05);
+//			FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.75), GUI.window.getScene().getRoot());
+//            fadeOut.setFromValue(1.0);
+//            fadeOut.setToValue(0.05);
             InstructionScene o = new InstructionScene(new StackPane());o.setFill(Color.BLACK);
             FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.75), o.getRoot());
             fadeIn.setFromValue(0.0);
             fadeIn.setToValue(1.0);
-            fadeOut.setOnFinished(e3 -> {	            	
+//            fadeOut.setOnFinished(e3 -> {	            	
             	GUI.window.setScene(o);
             	fadeIn.play();
             	GUI.window.setFullScreen(true);	    			
-            });
-            fadeOut.play();
+//            });
+//            fadeOut.play();
 		});
 		
 		BorderPane main = new BorderPane();
