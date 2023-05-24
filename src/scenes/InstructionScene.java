@@ -29,7 +29,7 @@ public class InstructionScene extends Scene {
 		super(root,1920,1080);
 		BorderPane main = new BorderPane();
         main.setStyle("-fx-background-image: url('images/Instruction.jpg'); "+"-fx-background-repeat: no-repeat;-fx-background-size: 100% 100%;");
-//        main.setAlignment(Pos.BOTTOM_CENTER);
+
         HBox arr = new HBox();
         Image arrow = new Image("images/arrows.PNG");
         ImageView arrimg = new ImageView(arrow);
@@ -98,23 +98,19 @@ public class InstructionScene extends Scene {
                 m.setCycleCount(MediaPlayer.INDEFINITE);
                 m.play();
                 OpenScene.m.stop();
-//				FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.75), GUI.window.getScene().getRoot());
-//	            fadeOut.setFromValue(1.0);
-//	            fadeOut.setToValue(0.05);
+
 	            GameMapScene o = new GameMapScene(new StackPane());o.setFill(Color.BLACK);
 	            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.75), o.getRoot());
 	            fadeIn.setFromValue(0.0);
 	            fadeIn.setToValue(1.0);
-//	            fadeOut.setOnFinished(e3 -> {	            	
+            	
 	            	GUI.window.setScene(o);
 	            	fadeIn.play();
 	            	GUI.window.setFullScreen(true);	    			
-//	            });
-//	            fadeOut.play();
+
         	}
 		});
 	}
 
 }
-//Label click = new Label("You're All Set! Click Anywhere to Start The Action!");
-//click.setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 30; -fx-text-fill: White; ; -fx-background-color: Black");
+

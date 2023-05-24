@@ -38,10 +38,7 @@ public class BaseScene extends Scene {
         AudioClip au = new AudioClip(new File("src/sounds/BaseScene.mp3").toURI().toString());
         au.setCycleCount(1);
         au.play();
-//        Media song = new Media(new File("src/sounds/BaseScene.mp3").toURI().toString());
-//        MediaPlayer m = new MediaPlayer(song);
-//        m.setCycleCount(1);
-//        m.play();
+
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.seconds(0), 
                     new KeyValue(loadingLabel.translateXProperty(), 0),
@@ -72,19 +69,16 @@ public class BaseScene extends Scene {
             timeline.setCycleCount(Timeline.INDEFINITE);
             timeline.play();
         loadingLabel.setTranslateY(-400);
-        // Create a progress bar to display the loading progress
+
         ProgressBar progressBar = new ProgressBar();
         progressBar.setProgress(0);
     	progressBar.setStyle("-fx-accent:black;-fx-pref-width: 200; -fx-pref-height: 40;");
-        // Create a VBox to hold the label and progress bar
+
         VBox loadingBox = new VBox(progressBar);
         loadingBox.setAlignment(Pos.BOTTOM_CENTER);
         loadingBox.setSpacing(20);
         loadingBox.setTranslateY(400);
         
-       
-        
-        // Create a stack pane to center the label
         VBox loadingPane = new VBox(loadingLabel,loadingBox);
         loadingPane.setAlignment(Pos.CENTER);
         loadingPane.setStyle("-fx-background-image: url('images/OpenScene.jpg'); "+"-fx-background-repeat: no-repeat; -fx-background-size: 100% 100%;");
@@ -105,22 +99,16 @@ public class BaseScene extends Scene {
 		
 		loadingTask.setOnSucceeded(event -> {
 			this.setFill(Color.BLACK);
-//			FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.75), GUI.window.getScene().getRoot());
-//            fadeOut.setFromValue(1.0);
-//            fadeOut.setToValue(0.05);
+
             OpenScene o = new OpenScene(new StackPane());o.setFill(Color.BLACK);
             FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.75), o.getRoot());
             fadeIn.setFromValue(0.0);
             fadeIn.setToValue(1.0);
-//            fadeOut.setOnFinished(e3 -> {
+
             	GUI.window.setScene(o);
             	fadeIn.play();
     			GUI.window.setFullScreen(true);
-//            });
-            
-            
-//            fadeOut.play();
-            
+
 			});
 	}
 

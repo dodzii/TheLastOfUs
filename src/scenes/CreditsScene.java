@@ -67,8 +67,8 @@ public class CreditsScene extends Scene {
             fadeOut.setToValue(0.0);
             fadeOut.setOnFinished(e3 -> GUI.window.close());
         	PauseTransition delay = new PauseTransition(Duration.seconds(1));
-            delay.setOnFinished(e2 -> fadeOut.play()); // Close the window after the delay
-            delay.play(); // Start the delay
+            delay.setOnFinished(e2 -> fadeOut.play());
+            delay.play();
         });
         main.setLeft(namesl);
         main.setRight(namesr);

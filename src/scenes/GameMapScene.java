@@ -128,11 +128,7 @@ public class GameMapScene extends Scene {
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
 								pause.play();
 								pause.setOnFinished(e4-> {
-//								FadeTransition fadeOut = new FadeTransition(
-//										Duration.seconds(0.75), GUI.window
-//												.getScene().getRoot());
-//								fadeOut.setFromValue(1.0);
-//								fadeOut.setToValue(0.05);
+
 								GameWonScene o = new GameWonScene(
 										new StackPane());
 								o.setFill(Color.BLACK);
@@ -140,13 +136,12 @@ public class GameMapScene extends Scene {
 										Duration.seconds(0.75), o.getRoot());
 								fadeIn.setFromValue(0.0);
 								fadeIn.setToValue(1.0);
-//								fadeOut.setOnFinished(e3 -> {
+
 									GUI.window.setScene(o);
 									fadeIn.play();
 									GUI.window.setFullScreen(true);
 								});
-//								fadeOut.play();
-//								});
+
 							} else {
 								AlertBox a = new AlertBox(
 										"You Have Died Because Of A Trap Cell \n Unfortunately  You  Lost!! ");
@@ -155,11 +150,7 @@ public class GameMapScene extends Scene {
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
 								pause.play();
 								pause.setOnFinished(e4->{
-//								FadeTransition fadeOut = new FadeTransition(
-//										Duration.seconds(0.75), GUI.window
-//												.getScene().getRoot());
-//								fadeOut.setFromValue(1.0);
-//								fadeOut.setToValue(0.05);
+
 								GameLostScene o = new GameLostScene(
 										new StackPane());
 								o.setFill(Color.BLACK);
@@ -167,13 +158,12 @@ public class GameMapScene extends Scene {
 										Duration.seconds(0.75), o.getRoot());
 								fadeIn.setFromValue(0.0);
 								fadeIn.setToValue(1.0);
-//								fadeOut.setOnFinished(e3 -> {
+
 									GUI.window.setScene(o);
 									fadeIn.play();
 									GUI.window.setFullScreen(true);
 								});
-//								fadeOut.play();
-//								});
+
 							}
 						}
 					} catch (MovementException e1) {
@@ -217,11 +207,7 @@ public class GameMapScene extends Scene {
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
 								pause.play();
 								pause.setOnFinished(e4-> {
-//								FadeTransition fadeOut = new FadeTransition(
-//										Duration.seconds(0.75), GUI.window
-//												.getScene().getRoot());
-//								fadeOut.setFromValue(1.0);
-//								fadeOut.setToValue(0.05);
+
 								GameWonScene o = new GameWonScene(
 										new StackPane());
 								o.setFill(Color.BLACK);
@@ -229,13 +215,12 @@ public class GameMapScene extends Scene {
 										Duration.seconds(0.75), o.getRoot());
 								fadeIn.setFromValue(0.0);
 								fadeIn.setToValue(1.0);
-//								fadeOut.setOnFinished(e3 -> {
+
 									GUI.window.setScene(o);
 									fadeIn.play();
 									GUI.window.setFullScreen(true);
 								});
-//								fadeOut.play();
-//								});
+
 							} else {
 								AlertBox a = new AlertBox(
 										"You Have Died Because Of A Trap Cell \n Unfortunately  You  Lost!! ");
@@ -245,11 +230,7 @@ public class GameMapScene extends Scene {
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
 								pause.play();
 								pause.setOnFinished(e4->{
-//								FadeTransition fadeOut = new FadeTransition(
-//										Duration.seconds(0.75), GUI.window
-//												.getScene().getRoot());
-//								fadeOut.setFromValue(1.0);
-//								fadeOut.setToValue(0.05);
+
 								GameLostScene o = new GameLostScene(
 										new StackPane());
 								o.setFill(Color.BLACK);
@@ -257,13 +238,12 @@ public class GameMapScene extends Scene {
 										Duration.seconds(0.75), o.getRoot());
 								fadeIn.setFromValue(0.0);
 								fadeIn.setToValue(1.0);
-//								fadeOut.setOnFinished(e3 -> {
+
 									GUI.window.setScene(o);
 									fadeIn.play();
 									GUI.window.setFullScreen(true);
 								});
-//								fadeOut.play();
-//								});
+
 							}
 						}
 					} catch (MovementException e1) {
@@ -307,11 +287,7 @@ public class GameMapScene extends Scene {
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
 								pause.play();
 								pause.setOnFinished(e4-> {
-//								FadeTransition fadeOut = new FadeTransition(
-//										Duration.seconds(0.75), GUI.window
-//												.getScene().getRoot());
-//								fadeOut.setFromValue(1.0);
-//								fadeOut.setToValue(0.05);
+
 								GameWonScene o = new GameWonScene(
 										new StackPane());
 								o.setFill(Color.BLACK);
@@ -319,13 +295,12 @@ public class GameMapScene extends Scene {
 										Duration.seconds(0.75), o.getRoot());
 								fadeIn.setFromValue(0.0);
 								fadeIn.setToValue(1.0);
-//								fadeOut.setOnFinished(e3 -> {
+
 									GUI.window.setScene(o);
 									fadeIn.play();
 									GUI.window.setFullScreen(true);
 								});
-//								fadeOut.play();
-//								});
+
 							} else {
 								AlertBox a = new AlertBox(
 										"You Have Died Because Of A Trap Cell \n Unfortunately  You  Lost!! ");
@@ -335,11 +310,7 @@ public class GameMapScene extends Scene {
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
 								pause.play();
 								pause.setOnFinished(e4->{
-//								FadeTransition fadeOut = new FadeTransition(
-//										Duration.seconds(0.75), GUI.window
-//												.getScene().getRoot());
-//								fadeOut.setFromValue(1.0);
-//								fadeOut.setToValue(0.05);
+
 								GameLostScene o = new GameLostScene(
 										new StackPane());
 								o.setFill(Color.BLACK);
@@ -347,13 +318,12 @@ public class GameMapScene extends Scene {
 										Duration.seconds(0.75), o.getRoot());
 								fadeIn.setFromValue(0.0);
 								fadeIn.setToValue(1.0);
-//								fadeOut.setOnFinished(e3 -> {
+
 									GUI.window.setScene(o);
 									fadeIn.play();
 									GUI.window.setFullScreen(true);
 								});
-//								fadeOut.play();
-//								});
+
 							}
 						}
 					} catch (MovementException e1) {
@@ -397,11 +367,7 @@ public class GameMapScene extends Scene {
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
 								pause.play();
 								pause.setOnFinished(e4-> {
-//								FadeTransition fadeOut = new FadeTransition(
-//										Duration.seconds(0.75), GUI.window
-//												.getScene().getRoot());
-//								fadeOut.setFromValue(1.0);
-//								fadeOut.setToValue(0.05);
+
 								GameWonScene o = new GameWonScene(
 										new StackPane());
 								o.setFill(Color.BLACK);
@@ -409,13 +375,12 @@ public class GameMapScene extends Scene {
 										Duration.seconds(0.75), o.getRoot());
 								fadeIn.setFromValue(0.0);
 								fadeIn.setToValue(1.0);
-//								fadeOut.setOnFinished(e3 -> {
+
 									GUI.window.setScene(o);
 									fadeIn.play();
 									GUI.window.setFullScreen(true);
 								});
-//								fadeOut.play();
-//								});
+
 							} else {
 								AlertBox a = new AlertBox(
 										"You Have Died Because Of A Trap Cell \n You Lost!! ");
@@ -425,11 +390,7 @@ public class GameMapScene extends Scene {
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
 								pause.play();
 								pause.setOnFinished(e4->{
-//								FadeTransition fadeOut = new FadeTransition(
-//										Duration.seconds(0.75), GUI.window
-//												.getScene().getRoot());
-//								fadeOut.setFromValue(1.0);
-//								fadeOut.setToValue(0.05);
+
 								GameLostScene o = new GameLostScene(
 										new StackPane());
 								o.setFill(Color.BLACK);
@@ -437,13 +398,12 @@ public class GameMapScene extends Scene {
 										Duration.seconds(0.75), o.getRoot());
 								fadeIn.setFromValue(0.0);
 								fadeIn.setToValue(1.0);
-//								fadeOut.setOnFinished(e3 -> {
+
 									GUI.window.setScene(o);
 									fadeIn.play();
 									GUI.window.setFullScreen(true);
 								});
-//								fadeOut.play();
-//								});
+
 							}
 						}
 					} catch (MovementException e1) {
@@ -460,8 +420,6 @@ public class GameMapScene extends Scene {
 						leftUp.getChildren().add(a);
 					}
 				}
-
-//				else
 
 				else if (e.getCode() == KeyCode.C) {
 					try {
@@ -481,11 +439,7 @@ public class GameMapScene extends Scene {
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
 								pause.play();
 								pause.setOnFinished(e4-> {
-//								FadeTransition fadeOut = new FadeTransition(
-//										Duration.seconds(0.75), GUI.window
-//												.getScene().getRoot());
-//								fadeOut.setFromValue(1.0);
-//								fadeOut.setToValue(0.05);
+
 								GameWonScene o = new GameWonScene(
 										new StackPane());
 								o.setFill(Color.BLACK);
@@ -493,13 +447,12 @@ public class GameMapScene extends Scene {
 										Duration.seconds(0.75), o.getRoot());
 								fadeIn.setFromValue(0.0);
 								fadeIn.setToValue(1.0);
-//								fadeOut.setOnFinished(e3 -> {
+
 									GUI.window.setScene(o);
 									fadeIn.play();
 									GUI.window.setFullScreen(true);
 								});
-//								fadeOut.play();
-//								});
+
 							} else {
 								AlertBox a = new AlertBox(
 										"Unfortunately  You  Lost!");	
@@ -510,11 +463,7 @@ public class GameMapScene extends Scene {
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
 								pause.play();
 								pause.setOnFinished(e4->{
-//								FadeTransition fadeOut = new FadeTransition(
-//										Duration.seconds(0.75), GUI.window
-//												.getScene().getRoot());
-//								fadeOut.setFromValue(1.0);
-//								fadeOut.setToValue(0.05);
+
 								GameLostScene o = new GameLostScene(
 										new StackPane());
 								o.setFill(Color.BLACK);
@@ -522,13 +471,12 @@ public class GameMapScene extends Scene {
 										Duration.seconds(0.75), o.getRoot());
 								fadeIn.setFromValue(0.0);
 								fadeIn.setToValue(1.0);
-//								fadeOut.setOnFinished(e3 -> {
+
 									GUI.window.setScene(o);
 									fadeIn.play();
 									GUI.window.setFullScreen(true);
 								});
-//								fadeOut.play();
-//								});
+
 							}
 						}
 					} catch (GameActionException e1) {
@@ -556,11 +504,7 @@ public class GameMapScene extends Scene {
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
 								pause.play();
 								pause.setOnFinished(e4-> {
-//								FadeTransition fadeOut = new FadeTransition(
-//										Duration.seconds(0.75), GUI.window
-//												.getScene().getRoot());
-//								fadeOut.setFromValue(1.0);
-//								fadeOut.setToValue(0.05);
+
 								GameWonScene o = new GameWonScene(
 										new StackPane());
 								o.setFill(Color.BLACK);
@@ -568,13 +512,12 @@ public class GameMapScene extends Scene {
 										Duration.seconds(0.75), o.getRoot());
 								fadeIn.setFromValue(0.0);
 								fadeIn.setToValue(1.0);
-//								fadeOut.setOnFinished(e3 -> {
+
 									GUI.window.setScene(o);
 									fadeIn.play();
 									GUI.window.setFullScreen(true);
 								});
-//								fadeOut.play();
-//								});
+
 							} else {
 								AlertBox a = new AlertBox(
 										"Unfortunately  You  Lost!");
@@ -585,11 +528,7 @@ public class GameMapScene extends Scene {
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
 								pause.play();
 								pause.setOnFinished(e4->{
-//								FadeTransition fadeOut = new FadeTransition(
-//										Duration.seconds(0.75), GUI.window
-//												.getScene().getRoot());
-//								fadeOut.setFromValue(1.0);
-//								fadeOut.setToValue(0.05);
+
 								GameLostScene o = new GameLostScene(
 										new StackPane());
 								o.setFill(Color.BLACK);
@@ -597,13 +536,12 @@ public class GameMapScene extends Scene {
 										Duration.seconds(0.75), o.getRoot());
 								fadeIn.setFromValue(0.0);
 								fadeIn.setToValue(1.0);
-//								fadeOut.setOnFinished(e3 -> {
+
 									GUI.window.setScene(o);
 									fadeIn.play();
 									GUI.window.setFullScreen(true);
 								});
-//								fadeOut.play();
-//								});
+
 							}
 						}
 					} catch (GameActionException e1) {
@@ -630,11 +568,7 @@ public class GameMapScene extends Scene {
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
 								pause.play();
 								pause.setOnFinished(e4-> {
-//								FadeTransition fadeOut = new FadeTransition(
-//										Duration.seconds(0.75), GUI.window
-//												.getScene().getRoot());
-//								fadeOut.setFromValue(1.0);
-//								fadeOut.setToValue(0.05);
+
 								GameWonScene o = new GameWonScene(
 										new StackPane());
 								o.setFill(Color.BLACK);
@@ -642,13 +576,12 @@ public class GameMapScene extends Scene {
 										Duration.seconds(0.75), o.getRoot());
 								fadeIn.setFromValue(0.0);
 								fadeIn.setToValue(1.0);
-//								fadeOut.setOnFinished(e3 -> {
+
 									GUI.window.setScene(o);
 									fadeIn.play();
 									GUI.window.setFullScreen(true);
 								});
-//								fadeOut.play();
-//								});
+
 							} else {
 								AlertBox a = new AlertBox(
 										"Unfortunately  You  Lost!");
@@ -659,11 +592,7 @@ public class GameMapScene extends Scene {
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
 								pause.play();
 								pause.setOnFinished(e4->{
-//								FadeTransition fadeOut = new FadeTransition(
-//										Duration.seconds(0.75), GUI.window
-//												.getScene().getRoot());
-//								fadeOut.setFromValue(1.0);
-//								fadeOut.setToValue(0.05);
+
 								GameLostScene o = new GameLostScene(
 										new StackPane());
 								o.setFill(Color.BLACK);
@@ -671,13 +600,12 @@ public class GameMapScene extends Scene {
 										Duration.seconds(0.75), o.getRoot());
 								fadeIn.setFromValue(0.0);
 								fadeIn.setToValue(1.0);
-//								fadeOut.setOnFinished(e3 -> {
+
 									GUI.window.setScene(o);
 									fadeIn.play();
 									GUI.window.setFullScreen(true);
 								});
-//								fadeOut.play();
-//								});
+
 							}
 						}
 					} catch (GameActionException e1) {
@@ -707,11 +635,7 @@ public class GameMapScene extends Scene {
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
 								pause.play();
 								pause.setOnFinished(e4-> {
-//								FadeTransition fadeOut = new FadeTransition(
-//										Duration.seconds(0.75), GUI.window
-//												.getScene().getRoot());
-//								fadeOut.setFromValue(1.0);
-//								fadeOut.setToValue(0.05);
+
 								GameWonScene o = new GameWonScene(
 										new StackPane());
 								o.setFill(Color.BLACK);
@@ -719,13 +643,12 @@ public class GameMapScene extends Scene {
 										Duration.seconds(0.75), o.getRoot());
 								fadeIn.setFromValue(0.0);
 								fadeIn.setToValue(1.0);
-//								fadeOut.setOnFinished(e3 -> {
+
 									GUI.window.setScene(o);
 									fadeIn.play();
 									GUI.window.setFullScreen(true);
 								});
-//								fadeOut.play();
-//								});
+
 							} else {
 								AlertBox a = new AlertBox(
 										"Unfortunately  You  Lost!");
@@ -736,11 +659,7 @@ public class GameMapScene extends Scene {
 								PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
 								pause.play();
 								pause.setOnFinished(e4->{
-//								FadeTransition fadeOut = new FadeTransition(
-//										Duration.seconds(0.75), GUI.window
-//												.getScene().getRoot());
-//								fadeOut.setFromValue(1.0);
-//								fadeOut.setToValue(0.05);
+
 								GameLostScene o = new GameLostScene(
 										new StackPane());
 								o.setFill(Color.BLACK);
@@ -748,13 +667,12 @@ public class GameMapScene extends Scene {
 										Duration.seconds(0.75), o.getRoot());
 								fadeIn.setFromValue(0.0);
 								fadeIn.setToValue(1.0);
-//								fadeOut.setOnFinished(e3 -> {
+
 									GUI.window.setScene(o);
 									fadeIn.play();
 									GUI.window.setFullScreen(true);
 								});
-//								fadeOut.play();
-//								});
+
 							}
 						}
 					} catch (Exception e1) {

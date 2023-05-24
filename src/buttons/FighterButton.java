@@ -10,7 +10,7 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
 public class FighterButton extends HeroButton{
-//	static ScaleTransition scaleTransition = GameMapScene.scaleTransition;
+
 	public FighterButton(Hero h) {
 		super();
 		this.setPrefSize(80,80);
