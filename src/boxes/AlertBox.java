@@ -1,13 +1,12 @@
 package boxes;
+import java.io.File;
+
 import scenes.GameMapScene;
-import javafx.application.Application;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.scene.media.AudioClip;
 
 
 public class AlertBox extends VBox{
@@ -26,6 +25,9 @@ public class AlertBox extends VBox{
 			close.setStyle("-fx-border-radius: 50px;-fx-background-color: transparent;-fx-border:2px;-fx-border-color: gray;-fx-font-family: Papyrus, fantasy ; -fx-font-size: 30; -fx-text-fill: White; -fx-font-weight: 900;");
 		});
 		close.setOnAction(e ->{
+			AudioClip au = new AudioClip(new File("src/sounds/click.mp3").toURI().toString());
+			au.setCycleCount(1);
+			au.play();
 			GameMapScene.alert = false;
 			GameMapScene.updateLeftUp();
 		});

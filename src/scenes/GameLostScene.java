@@ -7,11 +7,14 @@ import engine.Game;
 import javafx.animation.FadeTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
@@ -21,6 +24,7 @@ public class GameLostScene extends Scene {
 	public static MediaPlayer m;
 	public GameLostScene(Parent root) {
 		super(root,1920,1080);
+		this.setCursor(new ImageCursor(new Image("images/Cursor.png")));
 		Media song = new Media(new File("src/sounds/LostScene.mp3").toURI().toString());
         m = new MediaPlayer(song);
         m.setCycleCount(MediaPlayer.INDEFINITE);
@@ -52,6 +56,9 @@ public class GameLostScene extends Scene {
 		this.setRoot(main);
 		GUI.window.setFullScreen(true);
 		exit.setOnAction(e -> {
+			AudioClip au = new AudioClip(new File("src/sounds/click.mp3").toURI().toString());
+	        au.setCycleCount(1);
+	        au.play();
 			Game.availableHeroes.clear();
 			Game.heroes.clear();
 			Game.zombies.clear();
@@ -67,6 +74,9 @@ public class GameLostScene extends Scene {
             });
 
 		play.setOnAction(e -> {
+			AudioClip au = new AudioClip(new File("src/sounds/click.mp3").toURI().toString());
+	        au.setCycleCount(1);
+	        au.play();
 			m.stop();
 			Game.availableHeroes.clear();
 			Game.heroes.clear();

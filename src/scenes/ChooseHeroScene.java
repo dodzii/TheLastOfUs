@@ -1,5 +1,6 @@
 package scenes;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import engine.GUI;
@@ -8,6 +9,7 @@ import model.characters.*;
 import javafx.animation.FadeTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -19,6 +21,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
@@ -37,7 +40,7 @@ public class ChooseHeroScene extends Scene {
 	static Label heroType;
 	public ChooseHeroScene(Parent root) {
 		super(root,1920,1080);
-		
+		this.setCursor(new ImageCursor(new Image("images/Cursor.png")));
 		herosTmp.clear();
 		for(int j=0;j<Game.availableHeroes.size();j++) {
 			herosTmp.add(Game.availableHeroes.get(j));
@@ -72,6 +75,9 @@ public class ChooseHeroScene extends Scene {
 		middle.setPadding(new Insets(30));
 		middle.setAlignment(Pos.CENTER_LEFT);
 		left.setOnAction(e -> {
+			AudioClip au = new AudioClip(new File("src/sounds/click.mp3").toURI().toString());
+	        au.setCycleCount(1);
+	        au.play();
 			int tmp = i-1;
 			if(tmp<0) i = tmp + herosTmp.size();
 			else i=i-1;			
@@ -85,6 +91,9 @@ public class ChooseHeroScene extends Scene {
 			maxActions.setText("Max Actions: " + curr.getMaxActions());
 		});
 		right.setOnAction(e -> {
+			AudioClip au = new AudioClip(new File("src/sounds/click.mp3").toURI().toString());
+	        au.setCycleCount(1);
+	        au.play();
 			i=((i+1)%(herosTmp.size()));
 			curr = herosTmp.get(i);
 			imageView.setImage(getImage(curr));
@@ -151,7 +160,9 @@ public class ChooseHeroScene extends Scene {
 		});
 		transfer.setOnAction(e -> {
 			Game.startGame(curr);
-
+			AudioClip au = new AudioClip(new File("src/sounds/click.mp3").toURI().toString());
+			au.setCycleCount(1);
+			au.play();
             InstructionScene o = new InstructionScene(new StackPane());o.setFill(Color.BLACK);
             FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.75), o.getRoot());
             fadeIn.setFromValue(0.0);

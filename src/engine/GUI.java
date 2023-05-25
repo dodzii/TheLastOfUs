@@ -1,17 +1,9 @@
 package engine;
 
 import scenes.BaseScene;
-import scenes.GameLostScene;
-import scenes.GameWonScene;
-import scenes.InstructionScene;
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.concurrent.Task;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -19,6 +11,7 @@ public class GUI extends Application {
 	public static Stage window;
 	public void start(Stage primaryStage) {
 		window=primaryStage;
+		window.getIcons().add(new Image("images/starfire.jpg"));
 		window.setTitle("The Last Of Us: AAA Legacy");
 		window.initStyle(StageStyle.UNDECORATED);
 		window.setFullScreen(true);

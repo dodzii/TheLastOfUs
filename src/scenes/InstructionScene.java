@@ -8,6 +8,7 @@ import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -27,6 +28,7 @@ public class InstructionScene extends Scene {
 	public static MediaPlayer m;
 	public InstructionScene(Parent root) {
 		super(root,1920,1080);
+		this.setCursor(new ImageCursor(new Image("images/Cursor.png")));
 		BorderPane main = new BorderPane();
         main.setStyle("-fx-background-image: url('images/Instruction.jpg'); "+"-fx-background-repeat: no-repeat;-fx-background-size: 100% 100%;");
 
@@ -56,7 +58,7 @@ public class InstructionScene extends Scene {
         c.getChildren().addAll(cimg,cure);c.setSpacing(20);
         
         HBox u = new HBox();
-        ImageView uimg = new ImageView(new Image("images/U.PNG"));
+        ImageView uimg = new ImageView(new Image("images/S.png"));
         Label use = new Label(": Use Special Action");use.setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 30; -fx-text-fill: White; ; -fx-background-color: transparent");
         use.setTranslateY(10);
         u.getChildren().addAll(uimg,use);u.setSpacing(20);

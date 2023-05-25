@@ -7,9 +7,11 @@ import engine.Game;
 import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
 import javafx.geometry.Pos;
+import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
@@ -21,6 +23,7 @@ public class OpenScene extends Scene {
 	public static MediaPlayer m; 
 	public OpenScene(Parent root) {
 		super(root,1920,1080);
+		this.setCursor(new ImageCursor(new Image("images/Cursor.png")));
 		GUI.window.setFullScreen(true);
 		StackPane main = new StackPane();
         main.setStyle("-fx-background-image: url('images/MainScene.jpg'); "+"-fx-background-repeat: no-repeat;-fx-background-size: 100% 100%;");

@@ -1,7 +1,5 @@
 package scenes;
-
-import java.awt.Point;
-
+import java.io.File;
 import boxes.AlertBox;
 import buttons.EmptyButton;
 import buttons.ExplorerButton;
@@ -17,20 +15,22 @@ import model.world.*;
 import engine.*;
 import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
-import javafx.animation.SequentialTransition;
 import javafx.animation.PauseTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import exceptions.*;
@@ -42,9 +42,11 @@ public class GameMapScene extends Scene {
 	public static VBox leftDown;
 	public static GridPane map;
 	public static BorderPane main;
+	public static boolean flag =true;
 
 	public GameMapScene(Parent root) {
 		super(root, 1920, 1080);
+		this.setCursor(new ImageCursor(new Image("images/Cursor.png")));
 		curr = Game.heroes.get(0);
 		map = new GridPane();
 		updateMap();
@@ -110,6 +112,9 @@ public class GameMapScene extends Scene {
 						updateLeftUp();
 						updateLeftDown();
 						if (tmpBefore > tmpAfter) {
+							AudioClip au = new AudioClip(new File("src/sounds/trap.mp3").toURI().toString());
+					        au.setCycleCount(1);
+					        au.play();
 							alert = true;
 							AlertBox a = new AlertBox(
 									"You Have Stepped On A Trap Cell!!");
@@ -189,6 +194,9 @@ public class GameMapScene extends Scene {
 						updateLeftUp();
 						updateLeftDown();
 						if (tmpBefore > tmpAfter) {
+							AudioClip au = new AudioClip(new File("src/sounds/trap.mp3").toURI().toString());
+					        au.setCycleCount(1);
+					        au.play();
 							alert = true;
 							AlertBox a = new AlertBox(
 									"You Have Stepped On A Trap Cell!!");
@@ -269,6 +277,9 @@ public class GameMapScene extends Scene {
 						updateLeftUp();
 						updateLeftDown();
 						if (tmpBefore > tmpAfter) {
+							AudioClip au = new AudioClip(new File("src/sounds/trap.mp3").toURI().toString());
+					        au.setCycleCount(1);
+					        au.play();
 							alert = true;
 							AlertBox a = new AlertBox(
 									"You Have Stepped On A Trap Cell!!");
@@ -349,6 +360,9 @@ public class GameMapScene extends Scene {
 						updateLeftUp();
 						updateLeftDown();
 						if (tmpBefore > tmpAfter) {
+							AudioClip au = new AudioClip(new File("src/sounds/trap.mp3").toURI().toString());
+					        au.setCycleCount(1);
+					        au.play();
 							alert = true;
 							AlertBox a = new AlertBox(
 									"You Have Stepped On A Trap Cell!!");
@@ -424,6 +438,9 @@ public class GameMapScene extends Scene {
 				else if (e.getCode() == KeyCode.C) {
 					try {
 						curr.cure();
+						AudioClip au = new AudioClip(new File("src/sounds/cure.mp3").toURI().toString());
+				        au.setCycleCount(1);
+				        au.play();
 						updateMap();
 						updateLeftUp();
 						updateLeftDown();
@@ -480,6 +497,7 @@ public class GameMapScene extends Scene {
 							}
 						}
 					} catch (GameActionException e1) {
+						alert = true;
 						AlertBox a = new AlertBox(e1.getMessage());
 						leftUp.getChildren().clear();
 						leftUp.getChildren().add(a);
@@ -489,6 +507,9 @@ public class GameMapScene extends Scene {
 				else if (e.getCode() == KeyCode.A) {
 					try {
 						curr.attack();
+						AudioClip au = new AudioClip(new File("src/sounds/attacksound.mp3").toURI().toString());
+				        au.setCycleCount(1);
+				        au.play();
 						updateMap();
 						updateLeftUp();
 						updateLeftDown();
@@ -550,8 +571,18 @@ public class GameMapScene extends Scene {
 						leftUp.getChildren().clear();
 						leftUp.getChildren().add(a);
 					}
-				} else if (e.getCode() == KeyCode.U) {
+				} else if (e.getCode() == KeyCode.S) {
 					try {
+						if(curr instanceof Medic){
+							AudioClip au = new AudioClip(new File("src/sounds/heal.mp3").toURI().toString());
+					        au.setCycleCount(1);
+					        au.play();
+						}
+						if(curr instanceof Explorer){
+							AudioClip au = new AudioClip(new File("src/sounds/explorer.mp3").toURI().toString());
+					        au.setCycleCount(1);
+					        au.play();
+						}
 						curr.useSpecial();
 						updateMap();
 						updateLeftUp();
@@ -620,6 +651,9 @@ public class GameMapScene extends Scene {
 					try {
 						alert = false;
 						Game.endTurn();
+						AudioClip au = new AudioClip(new File("src/sounds/endturn.mp3").toURI().toString());
+				        au.setCycleCount(1);
+				        au.play();
 						updateMap();
 						updateLeftUp();
 						updateLeftDown();
@@ -709,6 +743,14 @@ public class GameMapScene extends Scene {
 
 	public static void updateMap() {
 		map.getChildren().clear();
+		if(Game.heroes.size()==4 && flag){
+			flag=false;
+			PauseTransition p = new PauseTransition(Duration.seconds(2));
+			p.play();
+			AudioClip au = new AudioClip(new File("src/sounds/1left.mp3").toURI().toString());
+	        au.setCycleCount(1);
+	        au.play();
+		}
 		for (int i = 0; i < 15; i++) {
 			for (int j = 0; j < 15; j++) {
 				if (Game.map[j][i] instanceof CharacterCell
@@ -756,7 +798,7 @@ public class GameMapScene extends Scene {
 			}
 		}
 	}
-
+	
 	public static void updateLeftUp() {
 		if (curr.getCurrentHp() == 0) {
 			leftUp.getChildren().clear();
@@ -780,5 +822,4 @@ public class GameMapScene extends Scene {
 			scaleTransition.play();
 		}
 	}
-
 }

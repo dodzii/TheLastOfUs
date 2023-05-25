@@ -1,11 +1,14 @@
 package buttons;
 
+import java.io.File;
+
 import model.characters.Zombie;
 import scenes.GameMapScene;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.AudioClip;
 
 public class ZombieButton extends Button{
 	public ZombieButton(boolean flag,Zombie z) {
@@ -28,6 +31,9 @@ public class ZombieButton extends Button{
 		}
 		
 		this.setOnAction(e->{
+			AudioClip au = new AudioClip(new File("src/sounds/zombie.mp3").toURI().toString());
+	        au.setCycleCount(1);
+	        au.play();
 			GameMapScene.curr.setTarget(z);
 		});;
 	}

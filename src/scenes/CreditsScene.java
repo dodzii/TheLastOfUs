@@ -7,9 +7,11 @@ import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
@@ -17,8 +19,8 @@ import javafx.util.Duration;
 public class CreditsScene extends Scene {
 	private String[] teamMembers = {"AAA Studios Team Members \n \n Abdelrahman Mohamed Talaat \n \n Ali Mahmoud Shokry \n\n  Abdullah Mahmoud Mohamed","Special Thanks To: \n\nProf. Slim Abdennadher\n\nDr. Nourhan Ehab\n\nOur TAs","All Rights Reserved To Naughty Dog"};
 	public CreditsScene(Parent root) {
-		
 		super(root,1920,1080);
+		this.setCursor(new ImageCursor(new Image("images/Cursor.png")));
 		BorderPane main = new BorderPane();
 		main.setStyle("-fx-background-image: url('images/CreditsScene.jpg'); "+"-fx-background-repeat: no-repeat;-fx-background-size: 100% 100%;");
 		VBox namesl = new VBox();

@@ -24,6 +24,9 @@ public class HeroLabel extends HBox{
 		hpBar.setPrefHeight(20);
 		hpBar.setStyle("-fx-accent: green;");
 		hpBar.setProgress(((double)h.getCurrentHp()/(double)h.getMaxHp()));
+		if(hpBar.getProgress()<0.3){
+			hpBar.setStyle("-fx-accent: red;");
+		}
 		Label vacc = new Label("Vaccines Available: "+h.getVaccineInventory().size());vacc.setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 20; -fx-text-fill: White");
 		Label supp = new Label("Supplies Available: "+h.getSupplyInventory().size());supp.setStyle("-fx-font-family: Papyrus, fantasy ; -fx-font-size: 20; -fx-text-fill: White");
 		VBox currhp = new VBox(5,hp,hpBar,vacc,supp);
