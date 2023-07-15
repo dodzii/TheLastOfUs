@@ -12,9 +12,9 @@ Overall, The Last of Us: Legacy is an exciting and challenging game that will ke
 
 ## How to try the game:
 1. Make sure you have java installed on your PC
-2. Download Eclipse JavaFX zip file from the repository
-3. Download TheLastOfUsLegacy zip file from the repository
+2. Download Eclipse JavaFX from https://drive.google.com/file/d/1UzIiAYHCr7jbfgJdFnxvhYpwhmAGIaqf/view?usp=drive_link
+3. Download TheLastOfUsLegacy zip file from https://drive.google.com/file/d/19sfjlurQ6iki-cgQxM47oydLZk_3NUUd/view?usp=sharing
 4. Import TheLastOfUsLegacy zip file as an existing project
-5. Run the java file named GUI.java
+5. Run the java file named GUI.java from the package views
 6. Enjoy ;)
    
