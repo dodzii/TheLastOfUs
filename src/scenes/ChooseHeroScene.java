@@ -3,7 +3,7 @@ package scenes;
 import java.io.File;
 import java.util.ArrayList;
 
-import engine.GUI;
+import views.GUI;
 import engine.Game;
 import model.characters.*;
 import javafx.animation.FadeTransition;
@@ -23,8 +23,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class ChooseHeroScene extends Scene {
@@ -56,8 +54,9 @@ public class ChooseHeroScene extends Scene {
 		left.setPrefHeight(100);
 		right.setPrefWidth(100);
 		right.setPrefHeight(100);
-		left.setStyle("-fx-background-image: url('images/Left.jpg'); "+"-fx-background-repeat: no-repeat;-fx-background-size: 100% 100%;-fx-border-style: none; -fx-focus-color: transparent;");
-		right.setStyle("-fx-background-image: url('images/Right.jpg'); "+"-fx-background-repeat: no-repeat;-fx-background-size: 100% 100%;-fx-border-style: none; -fx-focus-color: transparent;");
+		
+		left.setStyle("-fx-background-image: url('images/Left.jpg'); "+"-fx-background-repeat: no-repeat;-fx-background-size: 100% 100%;-fx-border-style: none; -fx-focus-color: black;-fx-faint-focus-color: black;");
+		right.setStyle("-fx-background-image: url('images/Right.jpg'); "+"-fx-background-repeat: no-repeat;-fx-background-size: 100% 100%;-fx-border-style: none; -fx-focus-color: black;-fx-faint-focus-color: black;");
 		imageView = new  ImageView(getImage(curr));
 		west.getChildren().addAll(left,imageView,right);
 		west.setAlignment(Pos.CENTER);
@@ -106,7 +105,11 @@ public class ChooseHeroScene extends Scene {
 			maxActions.setText("Max Actions: " + curr.getMaxActions());
 		});
 		this.setOnKeyPressed(e->{
-			if(e.getCode()==KeyCode.RIGHT){
+			if(e.getCode()==KeyCode.ESCAPE){
+				GUI.window.close();
+				System.exit(0);
+			}
+			else if(e.getCode()==KeyCode.RIGHT){
 				i=((i+1)%(herosTmp.size()));
 				curr = herosTmp.get(i);
 				imageView.setImage(getImage(curr));

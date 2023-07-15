@@ -4,7 +4,6 @@ import java.awt.Point;
 import java.util.*;
 import engine.*;
 import exceptions.*;
-import model.characters.*;
 import model.collectibles.*;
 import model.world.*;
 

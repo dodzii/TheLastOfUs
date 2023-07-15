@@ -3,7 +3,6 @@ package model.characters;
 import engine.Game;
 import exceptions.InvalidTargetException;
 import exceptions.NotEnoughActionsException;
-import model.world.Cell;
 import model.world.CharacterCell;
 
 public class Zombie extends Character {

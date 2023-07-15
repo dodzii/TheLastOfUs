@@ -2,7 +2,7 @@ package scenes;
 
 import java.io.File;
 
-import engine.GUI;
+import views.GUI;
 import engine.Game;
 import javafx.animation.FadeTransition;
 import javafx.geometry.Insets;
@@ -74,10 +74,11 @@ public class GameLostScene extends Scene {
             });
 
 		play.setOnAction(e -> {
+			m.stop();
 			AudioClip au = new AudioClip(new File("src/sounds/click.mp3").toURI().toString());
 	        au.setCycleCount(1);
 	        au.play();
-			m.stop();
+			
 			Game.availableHeroes.clear();
 			Game.heroes.clear();
 			Game.zombies.clear();

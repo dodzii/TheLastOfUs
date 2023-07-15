@@ -1,6 +1,5 @@
 package buttons;
 
-import javafx.animation.ScaleTransition;
 import javafx.scene.control.Button;
 
 public class EmptyButton extends Button{

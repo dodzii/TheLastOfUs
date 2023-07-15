@@ -2,7 +2,6 @@ package model.characters;
 
 import engine.*;
 import exceptions.*;
-import model.collectibles.*;
 import model.world.*;
 
 public class Explorer extends Hero {

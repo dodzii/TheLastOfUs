@@ -2,8 +2,7 @@ package scenes;
 
 import java.io.File;
 
-import engine.GUI;
-import engine.Game;
+import views.GUI;
 import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
 import javafx.geometry.Insets;
@@ -94,7 +93,11 @@ public class InstructionScene extends Scene {
         BorderPane.setAlignment(left, Pos.BOTTOM_LEFT);
         this.setRoot(main);
         this.setOnKeyPressed(e1 -> {
-        	if(e1.getCode() == KeyCode.SPACE){        		
+        	if(e1.getCode()==KeyCode.ESCAPE){
+				GUI.window.close();
+				System.exit(0);
+			}
+        	else if(e1.getCode() == KeyCode.SPACE){        		
         		Media song = new Media(new File("src/sounds/MapScene.mp3").toURI().toString());
                 m = new MediaPlayer(song);
                 m.setCycleCount(MediaPlayer.INDEFINITE);

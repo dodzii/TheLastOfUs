@@ -1,6 +1,6 @@
 package buttons;
 
-import model.collectibles.Supply;
+
 import javafx.scene.control.Button;
 
 public class SupplyButton extends Button{

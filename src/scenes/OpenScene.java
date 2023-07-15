@@ -2,7 +2,7 @@ package scenes;
 
 import java.io.File;
 
-import engine.GUI;
+import views.GUI;
 import engine.Game;
 import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
@@ -47,7 +47,11 @@ public class OpenScene extends Scene {
         m.play();
         this.setRoot(main);
 		this.setOnKeyPressed(e -> {
-			if(e.getCode()==KeyCode.SPACE){
+			if(e.getCode()==KeyCode.ESCAPE){
+				GUI.window.close();
+				System.exit(0);
+			}
+			else if(e.getCode()==KeyCode.SPACE){
 				try {
 					Game.loadHeroes("Heros.csv");
 				} catch (Exception e1) {

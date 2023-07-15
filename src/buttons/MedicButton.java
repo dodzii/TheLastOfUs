@@ -1,15 +1,10 @@
 package buttons;
 
-import java.awt.Point;
 import java.io.File;
-
-import engine.Game;
 import scenes.GameMapScene;
 import model.characters.Hero;
-import model.world.CharacterCell;
 import javafx.animation.ScaleTransition;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.AudioClip;

@@ -6,7 +6,6 @@ import model.characters.Hero;
 import scenes.GameMapScene;
 import javafx.animation.ScaleTransition;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.AudioClip;

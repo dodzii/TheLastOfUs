@@ -1,8 +1,7 @@
 package scenes;
-
 import java.io.File;
 
-import engine.GUI;
+import views.GUI;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -16,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
@@ -108,7 +108,25 @@ public class BaseScene extends Scene {
     			GUI.window.setFullScreen(true);
 
 			});
-		
+		this.setOnKeyPressed(e->{
+			if(e.getCode()==KeyCode.ESCAPE){
+				GUI.window.close();
+				System.exit(0);
+			}
+			else if(e.getCode()==KeyCode.S){
+				loadingTask.cancel();
+				au.stop();
+				this.setFill(Color.BLACK);
+	            OpenScene o = new OpenScene(new StackPane());o.setFill(Color.BLACK);
+	            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.75), o.getRoot());
+	            fadeIn.setFromValue(0.0);
+	            fadeIn.setToValue(1.0);
+
+	            	GUI.window.setScene(o);
+	            	fadeIn.play();
+	    			GUI.window.setFullScreen(true);
+			}
+		});
 	}
 
 

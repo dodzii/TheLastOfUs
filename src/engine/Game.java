@@ -40,6 +40,7 @@ public class Game{
 				availableHeroes.add(o);
 			}
 		}
+		br.close();
 	}
 
 	public static void startGame(Hero h) {

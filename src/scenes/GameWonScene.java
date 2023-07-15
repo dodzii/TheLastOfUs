@@ -2,7 +2,7 @@ package scenes;
 
 import java.io.File;
 
-import engine.GUI;
+import views.GUI;
 import engine.Game;
 import javafx.animation.FadeTransition;
 import javafx.geometry.Insets;

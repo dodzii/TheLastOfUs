@@ -1,6 +1,6 @@
 package scenes;
 
-import engine.GUI;
+import views.GUI;
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.animation.SequentialTransition;
@@ -68,7 +68,7 @@ public class CreditsScene extends Scene {
             fadeOut.setFromValue(1.0);
             fadeOut.setToValue(0.0);
             fadeOut.setOnFinished(e3 -> GUI.window.close());
-        	PauseTransition delay = new PauseTransition(Duration.seconds(1));
+        	PauseTransition delay = new PauseTransition(Duration.seconds(2));
             delay.setOnFinished(e2 -> fadeOut.play());
             delay.play();
         });
